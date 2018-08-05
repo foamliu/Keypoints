@@ -21,7 +21,7 @@ if __name__ == '__main__':
     ensure_folder('data')
 
     # if not os.path.isdir(train_image_folder):
-    # extract(train_folder)
+    extract(train_folder)
 
     # if not os.path.isdir(valid_image_folder):
     extract(valid_folder)
