@@ -32,4 +32,6 @@ if __name__ == '__main__':
     print('avg width: ' + str(np.mean(width_list)))
     print('avg height: ' + str(np.mean(height_list)))
     print('avg num_human of boxes: ' + str(np.mean(human_list)))
+    print('max num_human of boxes: ' + str(np.max(human_list)))
+    print('min num_human of boxes: ' + str(np.min(human_list)))
     print('avg num_human of keypoints: ' + str(np.mean(keypoint_list)))
