@@ -15,8 +15,8 @@ hidden_size = 512
 
 train_folder = 'data/ai_challenger_keypoint_train_20170909'
 valid_folder = 'data/ai_challenger_keypoint_validation_20170911'
-test_a_folder = 'data/keypoint_test_a_images_20180103'
-test_b_folder = 'data/keypoint_test_b_images_20180103'
+test_a_folder = 'data/ai_challenger_keypoint_test_a_20180103'
+test_b_folder = 'data/ai_challenger_keypoint_test_b_20180103'
 train_image_folder = os.path.join(train_folder, 'keypoint_train_images_20170911')
 valid_image_folder = os.path.join(valid_folder, 'keypoint_validation_images_20170911')
 test_a_image_folder = os.path.join(test_a_folder, 'keypoint_test_a_images_20180103')
