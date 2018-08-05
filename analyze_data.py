@@ -1,7 +1,8 @@
 import json
 import os
-import numpy as np
+
 import cv2 as cv
+import numpy as np
 from tqdm import tqdm
 
 from config import train_image_folder, train_annotations_filename
@@ -17,6 +18,8 @@ if __name__ == '__main__':
     height_list = []
     human_list = []
     keypoint_list = []
+    print(len(data[0]['keypoint_annotations']['human1']))
+
     for item in tqdm(data):
         image_id = item['image_id']
         human = item['human_annotations']
@@ -27,7 +30,6 @@ if __name__ == '__main__':
         height_list.append(img.shape[0])
         human_list.append(len(human))
         keypoint_list.append(len(keypoint))
-        assert(len(keypoint['human1']) == 21)
 
     print('avg width: ' + str(np.mean(width_list)))
     print('avg height: ' + str(np.mean(height_list)))
