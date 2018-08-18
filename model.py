@@ -9,7 +9,8 @@ from keras.layers.pooling import MaxPooling2D
 from keras.models import Model
 from keras.regularizers import l2
 from keras.utils import plot_model
-from config import image_h, image_w
+
+from config import image_h, image_w, num_joints_and_bkg
 
 
 def relu(x): return Activation('relu')(x)
@@ -109,7 +110,7 @@ def stageT_block(x, num_p, stage, branch, weight_decay):
 
 def apply_mask(x, mask1, mask2, num_p, stage, branch):
     w_name = "weight_stage%d_L%d" % (stage, branch)
-    if num_p == 28:
+    if num_p == num_joints_and_bkg * 2:
         w = Multiply(name=w_name)([x, mask1])  # vec_weight
 
     else:
@@ -119,12 +120,12 @@ def apply_mask(x, mask1, mask2, num_p, stage, branch):
 
 def build_model(weight_decay):
     stages = 6
-    np_branch1 = 28
-    np_branch2 = 14
+    np_branch1 = num_joints_and_bkg * 2
+    np_branch2 = num_joints_and_bkg
 
     img_input_shape = (image_h, image_w, 3)
-    vec_input_shape = (image_h//8, image_w//8, 28)
-    heat_input_shape = (image_h//8, image_w//8, 14)
+    vec_input_shape = (image_h // 8, image_w // 8, num_joints_and_bkg * 2)
+    heat_input_shape = (image_h // 8, image_w // 8, num_joints_and_bkg)
 
     inputs = []
     outputs = []

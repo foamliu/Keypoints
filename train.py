@@ -8,7 +8,7 @@ from keras.utils import multi_gpu_model
 from config import patience, epochs, num_train_samples, num_valid_samples, batch_size
 from data_generator import train_gen, valid_gen
 from model import build_model
-from utils import get_available_gpus, get_available_cpus
+from utils import get_available_gpus, get_available_cpus, custom_loss
 
 if __name__ == '__main__':
     # Parse arguments
@@ -53,7 +53,7 @@ if __name__ == '__main__':
             new_model.load_weights(pretrained_path)
 
     adam = keras.optimizers.Adam(lr=5e-5)
-    new_model.compile(optimizer=adam, loss='categorical_crossentropy', metrics=['accuracy'])
+    new_model.compile(optimizer=adam, loss=custom_loss, metrics=['accuracy'])
 
     print(new_model.summary())
 

@@ -7,6 +7,8 @@ epochs = 10000
 patience = 50
 num_train_samples = 210000
 num_valid_samples = 30000
+num_joints = 14
+num_joints_and_bkg = 15
 
 train_folder = 'data/ai_challenger_keypoint_train_20170909'
 valid_folder = 'data/ai_challenger_keypoint_validation_20170911'
