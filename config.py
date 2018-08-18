@@ -10,6 +10,17 @@ num_valid_samples = 30000
 num_joints = 14
 num_joints_and_bkg = 15
 
+idx_in_raw = [12, 13, 0, 1, 2, 3, 4, 5,
+              6, 7, 8, 9, 10, 11]
+
+idx_in_raw_str = [
+    'Head', 'Neck', 'RShoulder', 'RElbow', 'RWrist', 'LShoulder', 'LElbow', 'LWrist',
+    'RHip', 'RKnee', 'RAnkle', 'LHip', 'LKnee', 'LAnkle']
+
+joint_pairs = list(zip(
+        [0, 1, 2, 3, 1, 5, 6, 2, 8, 9, 5, 11, 12],
+        [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]))
+
 train_folder = 'data/ai_challenger_keypoint_train_20170909'
 valid_folder = 'data/ai_challenger_keypoint_validation_20170911'
 test_a_folder = 'data/ai_challenger_keypoint_test_a_20180103'
