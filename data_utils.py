@@ -3,7 +3,14 @@ import math
 
 import numpy as np
 
-from config import num_joints, joint_pairs
+from config import num_joints, joint_pairs, num_connections, num_joints_and_bkg
+
+
+ALL_PAF_MASK = np.repeat(
+    np.ones((46, 46, 1), dtype=np.uint8), num_connections * 2, axis=2)
+
+ALL_HEATMAP_MASK = np.repeat(
+    np.ones((46, 46, 1), dtype=np.uint8), num_joints_and_bkg, axis=2)
 
 
 def from_raw_keypoints(human_annots, keypoint_annots):
