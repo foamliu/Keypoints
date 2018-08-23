@@ -10,7 +10,7 @@ from keras.models import Model
 from keras.regularizers import l2
 from keras.utils import plot_model
 
-from config import image_h, image_w, num_joints_and_bkg
+from config import image_h, image_w, num_joints_and_bkg, weight_decay
 
 
 def relu(x): return Activation('relu')(x)
@@ -118,7 +118,7 @@ def apply_mask(x, mask1, mask2, num_p, stage, branch):
     return w
 
 
-def build_model(weight_decay):
+def build_model():
     stages = 6
     np_branch1 = num_joints_and_bkg * 2
     np_branch2 = num_joints_and_bkg
