@@ -8,7 +8,7 @@ patience = 50
 weight_decay = 5e-4
 base_lr = 4e-5
 momentum = 0.9
-
+stages = 6
 
 num_train_samples = 210000
 num_valid_samples = 30000

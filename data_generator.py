@@ -7,7 +7,7 @@ import numpy as np
 from keras.utils import Sequence
 
 from config import image_h, image_w, batch_size, train_image_folder, train_annotations_filename, valid_image_folder, \
-    valid_annotations_filename, num_joints_and_bkg, num_connections
+    valid_annotations_filename, num_joints_and_bkg, num_connections, stages
 from data_utils import from_raw_keypoints, create_heatmap, create_paf, ALL_PAF_MASK, ALL_HEATMAP_MASK
 
 
@@ -59,7 +59,12 @@ class DataGenSequence(Sequence):
             batch_heatmaps[i_batch] = heatmap
             batch_pafmaps[i_batch] = pafmap
 
-        return [batch_images, batch_paf_masks, batch_heatmap_masks], [batch_pafmaps, batch_heatmaps]
+        batch_outputs = []
+        for _ in range(stages):
+            batch_outputs.append(batch_pafmaps)
+            batch_outputs.append(batch_heatmaps)
+
+        return [batch_images, batch_paf_masks, batch_heatmap_masks], batch_outputs
 
     def on_epoch_end(self):
         np.random.shuffle(self.samples)
