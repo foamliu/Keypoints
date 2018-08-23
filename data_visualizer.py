@@ -11,7 +11,10 @@ from data_generator import DataGenSequence
 
 if __name__ == '__main__':
     datagen = DataGenSequence('train')
-    [batch_images, batch_paf_masks, batch_heatmap_masks], [batch_pafmaps, batch_heatmaps] = datagen.__getitem__(0)
+    batch_inputs, batch_outputs = datagen.__getitem__(0)
+    batch_images, batch_paf_masks, batch_heatmap_masks = batch_inputs[0], batch_inputs[1], batch_inputs[2]
+    batch_pafmaps, batch_heatmaps = batch_outputs[0], batch_outputs[1]
+
     print(batch_images.shape)
     # items = random.sample(samples, 1)
     #
