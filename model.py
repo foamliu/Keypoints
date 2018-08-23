@@ -1,5 +1,6 @@
 import keras.backend as K
 import tensorflow as tf
+from keras.applications.vgg19 import VGG19
 from keras.initializers import random_normal, constant
 from keras.layers import Activation, Input, Lambda
 from keras.layers.convolutional import Conv2D
@@ -11,6 +12,7 @@ from keras.regularizers import l2
 from keras.utils import plot_model
 
 from config import image_h, image_w, num_joints_and_bkg, weight_decay
+from utils import get_best_model
 
 
 def relu(x): return Activation('relu')(x)
@@ -177,9 +179,47 @@ def build_model():
     return model
 
 
+from_vgg = {
+    'conv1_1': 'block1_conv1',
+    'conv1_2': 'block1_conv2',
+    'conv2_1': 'block2_conv1',
+    'conv2_2': 'block2_conv2',
+    'conv3_1': 'block3_conv1',
+    'conv3_2': 'block3_conv2',
+    'conv3_3': 'block3_conv3',
+    'conv3_4': 'block3_conv4',
+    'conv4_1': 'block4_conv1',
+    'conv4_2': 'block4_conv2'
+}
+
+
+def restore_weights(model):
+    """
+    Restores weights from the checkpoint file if exists or
+    preloads the first layers with VGG19 weights
+    :param weights_best_file:
+    :return: epoch number to use to continue training. last epoch + 1 or 0
+    """
+    # load previous weights or vgg19 if this is the first run
+    if get_best_model():
+        print("Loading the best weights...")
+
+        model.load_weights(get_best_model())
+    else:
+        print("Loading vgg19 weights...")
+
+        vgg_model = VGG19(include_top=False, weights='imagenet')
+
+        for layer in model.layers:
+            if layer.name in from_vgg:
+                vgg_layer_name = from_vgg[layer.name]
+                layer.set_weights(vgg_model.get_layer(vgg_layer_name).get_weights())
+                print("Loaded VGG19 layer: " + vgg_layer_name)
+
+
 if __name__ == '__main__':
-    with tf.device("/cpu:0"):
-        model = build_model(5e-4)
+    model = build_model()
+    restore_weights(model)
     print(model.summary())
     plot_model(model, to_file='model.svg', show_layer_names=True, show_shapes=True)
 

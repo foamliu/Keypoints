@@ -1,8 +1,11 @@
 import multiprocessing
-import keras.backend as K
+import os
+
 import cv2 as cv
-import tensorflow as tf
+import keras.backend as K
+import numpy as np
 from tensorflow.python.client import device_lib
+
 from config import batch_size
 
 
@@ -23,12 +26,18 @@ def draw_str(dst, target, s):
     cv.putText(dst, s, (x, y), cv.FONT_HERSHEY_PLAIN, 1.0, (255, 255, 255), lineType=cv.LINE_AA)
 
 
+def ensure_folder(folder):
+    if not os.path.exists(folder):
+        os.makedirs(folder)
+
+
 def custom_loss():
     """
     Euclidean loss as implemented in caffe
     https://github.com/BVLC/caffe/blob/master/src/caffe/layers/euclidean_loss_layer.cpp
     :return:
     """
+
     def _eucl_loss(x, y):
         return K.sum(K.square(x - y)) / batch_size / 2
 
@@ -47,3 +56,17 @@ def custom_loss():
     losses["weight_stage6_L2"] = _eucl_loss
 
     return losses
+
+
+def get_best_model():
+    import re
+    pattern = 'model.(?P<epoch>\d+)-(?P<val_loss>[0-9]*\.?[0-9]*).hdf5'
+    p = re.compile(pattern)
+    ensure_folder('models')
+    files = [f for f in os.listdir('models/') if p.match(f)]
+    filename = None
+    if len(files) > 0:
+        losses = [float(p.match(f).groups()[1]) for f in files]
+        best_index = int(np.argmin(losses))
+        filename = os.path.join('models', files[best_index])
+    return filename
