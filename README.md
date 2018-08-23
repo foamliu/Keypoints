@@ -4,12 +4,12 @@
 
 本代码库是如下论文的实现：
 
-@InProceedings{cao2017realtime,
-  title = {Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields},
-  author = {Zhe Cao and Tomas Simon and Shih-En Wei and Yaser Sheikh},
-  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
-  year = {2017}
-  }
+    @InProceedings{cao2017realtime,
+      title = {Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields},
+      author = {Zhe Cao and Tomas Simon and Shih-En Wei and Yaser Sheikh},
+      booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+      year = {2017}
+      }
 
 ## 依赖
 - [NumPy](http://docs.scipy.org/doc/numpy-1.10.1/user/install.html)
