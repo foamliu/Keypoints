@@ -53,3 +53,6 @@ $ tensorboard --logdir path_to_current_dir/logs
 ```bash
 $ python demo.py
 ```
+
+## 鸣谢
+本代码主要基于 @michalfaber 的代码库 keras_Realtime_Multi-Person_Pose_Estimation。
