@@ -2,7 +2,7 @@ import os
 
 image_h, image_w, image_size = 368, 368, 368
 channel = 3
-batch_size = 256
+batch_size = 16
 epochs = 10000
 patience = 50
 weight_decay = 5e-4
