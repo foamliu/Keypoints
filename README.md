@@ -27,7 +27,7 @@
 
 ## 网络结构
 
- ![image](https://github.com/foamliu/Image-Captioning-v2/raw/master/images/net.png)
+ ![image](https://github.com/foamliu/Keypoints/raw/master/images/two-branch_multi-stage_CNN.png)
 
 ## 用法
 

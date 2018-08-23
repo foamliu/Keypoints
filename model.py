@@ -1,5 +1,4 @@
 import keras.backend as K
-import tensorflow as tf
 from keras.applications.vgg19 import VGG19
 from keras.initializers import random_normal, constant
 from keras.layers import Activation, Input, Lambda
