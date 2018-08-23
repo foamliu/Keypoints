@@ -16,14 +16,14 @@ if __name__ == '__main__':
         samples = json.load(file)
     items = random.sample(samples, 1)
 
-    for i, item in enumerate(items):
+    for k, item in enumerate(items):
         image_id = item['image_id']
         human_annots = item['human_annotations']
         keypoint_annots = item['keypoint_annotations']
         filename = os.path.join(train_image_folder, '{}.jpg'.format(image_id))
         image = cv.imread(filename)
         image = cv.resize(image, (image_h, image_w))
-        cv.imwrite('image_datav_{}.png'.format(i), image)
+        cv.imwrite('images/image_datav_{}.png'.format(k), image)
         image = image[:, :, ::-1]
 
         all_joints = from_raw_keypoints(human_annots, keypoint_annots)
@@ -40,4 +40,5 @@ if __name__ == '__main__':
                 right = left + 7
                 bottom = top + 7
                 cv.rectangle(frame, (left, top), (right, bottom), int(heatmap[i, j] * 255), cv.FILLED)
-        cv.imwrite('PCM_datav_{}.png'.format(i), frame)
+                print(heatmap[i, j])
+        cv.imwrite('images/PCM_datav_{}.png'.format(k), frame)
