@@ -33,8 +33,8 @@ if __name__ == '__main__':
         part_index = random.choice(range(num_joints_and_bkg))
         heatmap = heatmap[:, :, part_index]
         frame = np.zeros((image_h, image_w), np.uint8)
-        for i in range(image_h):
-            for j in range(image_w):
+        for i in range(46):
+            for j in range(46):
                 left = j * 8
                 top = i * 8
                 right = left + 7
