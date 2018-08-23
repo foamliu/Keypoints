@@ -31,7 +31,7 @@ def ensure_folder(folder):
         os.makedirs(folder)
 
 
-def custom_loss():
+def get_loss_funcs():
     """
     Euclidean loss as implemented in caffe
     https://github.com/BVLC/caffe/blob/master/src/caffe/layers/euclidean_loss_layer.cpp

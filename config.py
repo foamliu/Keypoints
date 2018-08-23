@@ -6,6 +6,10 @@ batch_size = 256
 epochs = 10000
 patience = 50
 weight_decay = 5e-4
+base_lr = 4e-5
+momentum = 0.9
+
+
 num_train_samples = 210000
 num_valid_samples = 30000
 num_joints = 14
