@@ -1,6 +1,15 @@
 # 人体骨骼关键点
 
-图像中文描述 + 视觉注意力
+人体骨骼关节点对于描述人体姿态、预测人体行为至关重要，因此人体骨骼关节点检测是诸多计算机视觉任务的基础，例如动作分类、异常行为检测、以及自动驾驶等。
+
+本代码库是如下论文的实现：
+
+@InProceedings{cao2017realtime,
+  title = {Realtime Multi-Person 2D Pose Estimation using Part Affinity Fields},
+  author = {Zhe Cao and Tomas Simon and Shih-En Wei and Yaser Sheikh},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year = {2017}
+  }
 
 ## 依赖
 - [NumPy](http://docs.scipy.org/doc/numpy-1.10.1/user/install.html)
