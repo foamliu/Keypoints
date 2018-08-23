@@ -33,20 +33,24 @@
 
 下载点这里：[人体骨骼关键点数据集](https://challenger.ai/datasets/keypoint)，放在 data 目录下。
 
+## 部位置信图(Part Confidence Maps)
 
-## 网络结构
+## 部位亲和场(Part Affinity Fields)
+
+
+# 网络结构
 
  ![image](https://github.com/foamliu/Keypoints/raw/master/images/two-branch_multi-stage_CNN.png)
 
-## 用法
+# 用法
 
-### 数据预处理
+## 数据预处理
 提取210,000 张训练图片和30,000 张验证图片：
 ```bash
 $ python pre-process.py
 ```
 
-### 训练
+## 训练
 ```bash
 $ python train.py
 ```
@@ -56,12 +60,12 @@ $ python train.py
 $ tensorboard --logdir path_to_current_dir/logs
 ```
 
-### 演示
+## 演示
 下载 [预训练模型](https://github.com/foamliu/Image-Captioning-v2/releases/download/v1.0/model.85-0.7657.hdf5) 放在 models 目录，然后执行:
 
 ```bash
 $ python demo.py
 ```
 
-## 鸣谢
+# 鸣谢
 本代码主要基于 @michalfaber 的代码库 keras_Realtime_Multi-Person_Pose_Estimation。
