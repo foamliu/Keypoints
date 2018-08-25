@@ -2,7 +2,6 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 import numpy as np
 
-from config import image_h, image_w
 from data_generator import DataGenSequence
 
 
@@ -17,19 +16,6 @@ def _get_bgimg(inp, target_size=None):
     if target_size:
         inp = cv.resize(inp, target_size, interpolation=cv.INTER_AREA)
     return inp
-
-
-def display_heatmap(img, heatmap):
-    body_part = 0
-
-    heatmap1 = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-
-    plt.imshow(img[:, :, [2, 1, 0]])
-    plt.imshow(heatmap1[:, :], alpha=.5)
-
-    print(heatmap.dtype)
-    print(np.max(heatmap))
-    print(np.min(heatmap))
 
 
 def display_image(img, heatmap, vectmap):
@@ -115,6 +101,20 @@ def show_image_heatmap_paf(g):
     display_image(img, heatmap, paf)
 
 
+def display_heatmap(img, heatmap):
+    body_part = 0
+
+    heatmap1 = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+
+    plt.imshow(img[:, :, [2, 1, 0]])
+    plt.imshow(heatmap1[:, :], alpha=.5)
+    plt.show()
+
+    print(heatmap.dtype)
+    print(np.max(heatmap))
+    print(np.min(heatmap))
+
+
 if __name__ == '__main__':
     datagen = DataGenSequence('train')
     batch_inputs, batch_outputs = datagen.__getitem__(0)
@@ -132,5 +132,5 @@ if __name__ == '__main__':
     image = image[:, :, ::-1]
     cv.imwrite('images/image_datav_{}.png'.format(0), image)
 
-    #display_image(image, heatmap, pafmap)
+    # display_image(image, heatmap, pafmap)
     display_heatmap(image, heatmap)
