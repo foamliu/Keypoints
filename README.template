@@ -66,7 +66,7 @@ $ python pre-process.py
 
 ## 部位亲和场(Part Affinity Fields)
 原图 | 部位亲和场(dx) | 部位亲和场(dy) | 肢体 |
-|---|---|---|
+|---|---|---|---|
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_0.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_0.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_0) |
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_1.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_1.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_1) |
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_2.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_2.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_2) |
