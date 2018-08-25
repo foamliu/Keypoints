@@ -121,7 +121,7 @@ if __name__ == '__main__':
     batch_images, batch_paf_masks, batch_heatmap_masks = batch_inputs[0], batch_inputs[1], batch_inputs[2]
     batch_pafmaps, batch_heatmaps = batch_outputs[0], batch_outputs[1]
 
-    print(batch_images.shape)
+    # print(batch_images.shape)
     item = batch_images[0], batch_pafmaps[0], batch_heatmaps[0]
 
     image = batch_images[0]
@@ -131,20 +131,6 @@ if __name__ == '__main__':
     image = ((image + 0.5) * 256).astype(np.uint8)
     image = image[:, :, ::-1]
     cv.imwrite('images/image_datav_{}.png'.format(0), image)
-
-    # heatmap = heatmap[:, :, 0]  # RShoulder
-    # frame = np.zeros((image_h, image_w), np.uint8)
-    # for i in range(46):
-    #     for j in range(46):
-    #         left = j * 8
-    #         top = i * 8
-    #         right = left + 7
-    #         bottom = top + 7
-    #         cv.rectangle(frame, (left, top), (right, bottom), int(heatmap[i, j] * 255), cv.FILLED)
-    #         print(heatmap[i, j])
-    # cv.imwrite('images/PCM_datav_{}.png'.format(0), frame)
-
-    # show_image_mask_center_of_main_person(image, pafmap, heatmap)
 
     #display_image(image, heatmap, pafmap)
     display_heatmap(image, heatmap)
