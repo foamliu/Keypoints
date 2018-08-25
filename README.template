@@ -33,6 +33,18 @@
 
 下载点这里：[人体骨骼关键点数据集](https://challenger.ai/datasets/keypoint)，放在 data 目录下。
 
+# 网络结构
+
+ ![image](https://github.com/foamliu/Keypoints/raw/master/images/two-branch_multi-stage_CNN.png)
+
+# 用法
+
+## 数据预处理
+提取210,000 张训练图片和30,000 张验证图片：
+```bash
+$ python pre-process.py
+```
+
 ## 部位置信图(Part Confidence Maps)
 
 原图 | 部位置信图 | 部位 |
@@ -69,19 +81,6 @@
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_11.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_11.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_11) |
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_12.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_12.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_12) |
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_13.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_13.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_13) |
-
-
-# 网络结构
-
- ![image](https://github.com/foamliu/Keypoints/raw/master/images/two-branch_multi-stage_CNN.png)
-
-# 用法
-
-## 数据预处理
-提取210,000 张训练图片和30,000 张验证图片：
-```bash
-$ python pre-process.py
-```
 
 ## 训练
 ```bash
