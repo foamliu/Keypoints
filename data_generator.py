@@ -47,13 +47,14 @@ class DataGenSequence(Sequence):
             keypoint_annots = item['keypoint_annotations']
             filename = os.path.join(train_image_folder, '{}.jpg'.format(image_id))
             image = cv.imread(filename)
+            orig_shape = image.shape[:2]
             image = cv.resize(image, (image_h, image_w))
             image = image[:, :, ::-1]
             batch_images[i_batch] = image / 256 - 0.5
             batch_paf_masks[i_batch] = ALL_PAF_MASK
             batch_heatmap_masks[i_batch] = ALL_HEATMAP_MASK
 
-            all_joints = from_raw_keypoints(human_annots, keypoint_annots)
+            all_joints = from_raw_keypoints(human_annots, keypoint_annots, orig_shape)
             heatmap = create_heatmap(num_joints_and_bkg, 46, 46, all_joints, sigma=7.0, stride=8)
             pafmap = create_paf(num_connections, 46, 46, all_joints, 1, stride=8)
             batch_heatmaps[i_batch] = heatmap
