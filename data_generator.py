@@ -45,7 +45,7 @@ class DataGenSequence(Sequence):
             image_id = item['image_id']
             human_annots = item['human_annotations']
             keypoint_annots = item['keypoint_annotations']
-            filename = os.path.join(train_image_folder, '{}.jpg'.format(image_id))
+            filename = os.path.join(self.image_folder, '{}.jpg'.format(image_id))
             image = cv.imread(filename)
             orig_shape = image.shape[:2]
             image = cv.resize(image, (image_h, image_w))
