@@ -53,6 +53,22 @@
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_13.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_heatmap_13.png) | Neck |
 
 ## 部位亲和场(Part Affinity Fields)
+原图 | 部位亲和场(dx) | 部位亲和场(dy) | 肢体 |
+|---|---|---|
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_0.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_0.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RShoulder->RElbow |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_1.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_1.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RElbow->RWrist |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_2.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_2.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RWrist->LShoulder |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_3.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_3.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | LShoulder->LElbow |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_4.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_4.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RElbow->LWrist |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_5.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_5.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | LWrist->RHip |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_6.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_6.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RHip->RKnee |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_7.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_7.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RWrist->RAnkle |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_8.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_8.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RAnkle->LHip |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_9.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_9.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | LHip->LKnee |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_10.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_10.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | LWrist->LAnkle |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_11.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_11.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | LAnkle->Head |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_12.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_12.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | Head->Neck |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_13.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_13.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RElbow->RAnkle |
 
 
 # 网络结构

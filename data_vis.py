@@ -124,6 +124,7 @@ if __name__ == '__main__':
 
     for j in range(num_joints):
         body_part = j
+        paf_num = j
         # print(batch_images.shape)
         item = batch_images[j], batch_pafmaps[j], batch_heatmaps[j]
 
@@ -139,6 +140,16 @@ if __name__ == '__main__':
         plt.imshow(image[:, :, [2, 1, 0]])
         plt.imshow(heatmap1[:, :], alpha=.5)
         plt.savefig('images/datav_heatmap_{}.png'.format(j))
+
+        pafmap1 = cv.resize(pafmap[:, :, paf_num * 2], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+        plt.imshow(image[:, :, [2, 1, 0]])
+        plt.imshow(pafmap1, alpha=.5)
+        plt.savefig('images/datav_paf_dx_{}.png'.format(j))
+
+        pafmap2 = cv.resize(pafmap[:, :, paf_num * 2 + 1], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+        plt.imshow(image[:, :, [2, 1, 0]])
+        plt.imshow(pafmap2, alpha=.5)
+        plt.savefig('images/datav_paf_dy_{}.png'.format(j))
 
     # display_image(image, heatmap, pafmap)
     #display_heatmap(image, heatmap)

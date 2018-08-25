@@ -53,6 +53,22 @@
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_13.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_heatmap_13.png) | $(body_part_13) |
 
 ## 部位亲和场(Part Affinity Fields)
+原图 | 部位亲和场(dx) | 部位亲和场(dy) | 肢体 |
+|---|---|---|
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_0.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_0.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_0) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_1.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_1.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_1) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_2.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_2.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_2) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_3.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_3.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_3) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_4.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_4.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_4) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_5.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_5.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_5) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_6.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_6.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_6) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_7.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_7.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_7) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_8.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_8.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_8) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_9.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_9.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_9) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_10.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_10.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_10) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_11.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_11.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_11) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_12.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_12.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_12) |
+|![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_13.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_13.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | $(joint_pair_13) |
 
 
 # 网络结构
