@@ -35,6 +35,16 @@
 
 ## 部位置信图(Part Confidence Maps)
 
+原图 | 部位置信图 | 部位 | 原图  | 部位置信图 | 部位 |
+|---|---|---|---|---|---|
+|![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_0.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_0.png) | RShoulder | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_1.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_1.png) | RElbow |
+|![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_2.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_2.png) | RWrist | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_3.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_3.png) | LShoulder |
+|![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_4.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_4.png) | LElbow | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_5.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_5.png) | LWrist |
+|![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_6.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_6.png) | RHip | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_7.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_7.png) | RKnee |
+|![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_8.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_8.png) | RAnkle | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_9.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_9.png) | LHip |
+|![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_10.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_10.png) | LKnee | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_11.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_11.png) | LAnkle |
+|![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_12.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_12.png) | Head | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_image_13.png)  | ![image](https://github.com/foamliu/Image-Captioning/raw/master/images/datav_heatmap_13.png) | Neck |
+
 ## 部位亲和场(Part Affinity Fields)
 
 
