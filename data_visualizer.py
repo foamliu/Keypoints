@@ -136,6 +136,7 @@ if __name__ == '__main__':
         cv.imwrite('images/datav_image_{}.png'.format(j), image)
 
         heatmap = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+        heatmap = np.expand_dims(heatmap, axis=-1)
         heatmap = image * 0.5 + heatmap * 0.5
         heatmap = heatmap.astype(np.uint8)
         cv.imwrite('images/datav_heatmap_{}.png'.format(j), heatmap)
