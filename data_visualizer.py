@@ -135,11 +135,16 @@ if __name__ == '__main__':
         image = image[:, :, ::-1]
         cv.imwrite('images/datav_image_{}.png'.format(j), image)
 
-        heatmap = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-        heatmap = np.expand_dims(heatmap, axis=-1)
-        heatmap = image * 0.5 + heatmap * 0.5
-        heatmap = heatmap.astype(np.uint8)
-        cv.imwrite('images/datav_heatmap_{}.png'.format(j), heatmap)
+        # heatmap = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+        # heatmap = np.expand_dims(heatmap, axis=-1)
+        # heatmap = image * 0.5 + heatmap * 0.5
+        # heatmap = heatmap.astype(np.uint8)
+        # cv.imwrite('images/datav_heatmap_{}.png'.format(j), heatmap)
+
+        heatmap1 = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+        plt.imshow(image[:, :, [2, 1, 0]])
+        plt.imshow(heatmap1[:, :], alpha=.5)
+        plt.savefig('images/datav_heatmap_{}.png'.format(j))
 
     # display_image(image, heatmap, pafmap)
     #display_heatmap(image, heatmap)
