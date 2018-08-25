@@ -19,6 +19,19 @@ def _get_bgimg(inp, target_size=None):
     return inp
 
 
+def display_heatmap(img, heatmap):
+    body_part = 0
+
+    heatmap1 = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+
+    plt.imshow(img[:, :, [2, 1, 0]])
+    plt.imshow(heatmap1[:, :], alpha=.5)
+
+    print(heatmap.dtype)
+    print(np.max(heatmap))
+    print(np.min(heatmap))
+
+
 def display_image(img, heatmap, vectmap):
     """
     Displays an image and associated heatmaps and pafs (all)
@@ -133,4 +146,5 @@ if __name__ == '__main__':
 
     # show_image_mask_center_of_main_person(image, pafmap, heatmap)
 
-    display_image(image, heatmap, pafmap)
+    #display_image(image, heatmap, pafmap)
+    display_heatmap(image, heatmap)
