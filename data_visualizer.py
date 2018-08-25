@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from data_generator import DataGenSequence
+from config import num_joints
 
 
 def _get_bgimg(inp, target_size=None):
@@ -121,16 +122,23 @@ if __name__ == '__main__':
     batch_images, batch_paf_masks, batch_heatmap_masks = batch_inputs[0], batch_inputs[1], batch_inputs[2]
     batch_pafmaps, batch_heatmaps = batch_outputs[0], batch_outputs[1]
 
-    # print(batch_images.shape)
-    item = batch_images[0], batch_pafmaps[0], batch_heatmaps[0]
+    for j in range(num_joints):
+        body_part = j
+        # print(batch_images.shape)
+        item = batch_images[j], batch_pafmaps[j], batch_heatmaps[j]
 
-    image = batch_images[0]
-    pafmap = batch_pafmaps[0]
-    heatmap = batch_heatmaps[0]
+        image = batch_images[j]
+        pafmap = batch_pafmaps[j]
+        heatmap = batch_heatmaps[j]
 
-    image = ((image + 0.5) * 256).astype(np.uint8)
-    image = image[:, :, ::-1]
-    cv.imwrite('images/image_datav_{}.png'.format(0), image)
+        image = ((image + 0.5) * 256).astype(np.uint8)
+        image = image[:, :, ::-1]
+        cv.imwrite('images/datav_image_{}.png'.format(j), image)
+
+        heatmap = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+        heatmap = image * 0.5 + heatmap * 0.5
+        heatmap = heatmap.astype(np.uint8)
+        cv.imwrite('images/datav_heatmap_{}.png'.format(j), heatmap)
 
     # display_image(image, heatmap, pafmap)
-    display_heatmap(image, heatmap)
+    #display_heatmap(image, heatmap)
