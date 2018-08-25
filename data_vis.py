@@ -151,5 +151,3 @@ if __name__ == '__main__':
         plt.imshow(pafmap2, alpha=.5)
         plt.savefig('images/datav_paf_dy_{}.png'.format(j))
 
-    # display_image(image, heatmap, pafmap)
-    #display_heatmap(image, heatmap)

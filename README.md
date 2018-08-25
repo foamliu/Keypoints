@@ -65,8 +65,9 @@ $ python pre-process.py
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_13.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_heatmap_13.png) | Neck |
 
 ## 部位亲和场(Part Affinity Fields)
+
 原图 | 部位亲和场(dx) | 部位亲和场(dy) | 肢体 |
-|---|---|---|
+|---|---|---|---|
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_0.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_0.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RShoulder->RElbow |
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_1.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_1.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RElbow->RWrist |
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_2.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_2.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_0.png) | RWrist->LShoulder |
