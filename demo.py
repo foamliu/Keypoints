@@ -5,9 +5,11 @@ import keras.backend as K
 import numpy as np
 import pylab as plt
 
-from config import image_h, image_w, scale
+from config import image_h, image_w, num_connections, num_joints_and_bkg
 from model import build_model
 from utils import get_best_model
+from data_utils import ALL_PAF_MASK, ALL_HEATMAP_MASK
+
 
 if __name__ == '__main__':
     model = build_model()
@@ -25,9 +27,15 @@ if __name__ == '__main__':
 
     input_img = np.transpose(np.float32(imageToTest[:, :, :, np.newaxis]),
                              (3, 0, 1, 2))  # required shape (1, width, height, channels)
+    input_img = input_img / 256 - 0.5
     print("Input shape: " + str(input_img.shape))
 
-    output_blobs = model.predict(input_img)
+    batch_paf_masks = np.empty((1, 46, 46, num_connections * 2), dtype=np.uint8)
+    batch_paf_masks[0] = ALL_PAF_MASK
+    batch_heatmap_masks = np.empty((1, 46, 46, num_joints_and_bkg), dtype=np.uint8)
+    batch_heatmap_masks[0] = ALL_HEATMAP_MASK
+
+    output_blobs = model.predict([input_img, batch_paf_masks, batch_heatmap_masks])
     print("Output shape (heatmap): " + str(output_blobs[1].shape))
 
     # extract outputs, resize, and remove padding
