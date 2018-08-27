@@ -32,18 +32,18 @@ if __name__ == '__main__':
 
     # extract outputs, resize, and remove padding
     heatmap = np.squeeze(output_blobs[1])  # output 1 is heatmaps
-    heatmap = cv.resize(heatmap, (0, 0), fx=scale, fy=scale, interpolation=cv.INTER_CUBIC)
+    heatmap = cv.resize(heatmap, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
 
     paf = np.squeeze(output_blobs[0])  # output 0 is PAFs
-    paf = cv.resize(paf, (0, 0), fx=scale, fy=scale, interpolation=cv.INTER_CUBIC)
+    paf = cv.resize(paf, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
 
     # visualization
     plt.imshow(oriImg[:, :, [2, 1, 0]])
-    plt.imshow(heatmap[:, :, 3], alpha=.5)  # right elbow
+    plt.imshow(heatmap[:, :, 1], alpha=.5)  # right elbow
     plt.show()
 
     plt.imshow(oriImg[:, :, [2, 1, 0]])
-    plt.imshow(paf[:, :, 16], alpha=.5)  # right elbow
+    plt.imshow(paf[:, :, 6], alpha=.5)  # right elbow
     plt.show()
 
     K.clear_session()
