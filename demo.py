@@ -24,6 +24,7 @@ if __name__ == '__main__':
 
     imageToTest = cv.resize(oriImg, (image_h, image_w), interpolation=cv.INTER_CUBIC)
     plt.imshow(imageToTest[:, :, [2, 1, 0]])
+    plt.show()
 
     input_img = np.transpose(np.float32(imageToTest[:, :, :, np.newaxis]),
                              (3, 0, 1, 2))  # required shape (1, width, height, channels)
@@ -46,11 +47,11 @@ if __name__ == '__main__':
     paf = cv.resize(paf, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
 
     # visualization
-    plt.imshow(oriImg[:, :, [2, 1, 0]])
+    plt.imshow(imageToTest[:, :, [2, 1, 0]])
     plt.imshow(heatmap[:, :, 1], alpha=.5)  # right elbow
     plt.show()
 
-    plt.imshow(oriImg[:, :, [2, 1, 0]])
+    plt.imshow(imageToTest[:, :, [2, 1, 0]])
     plt.imshow(paf[:, :, 6], alpha=.5)  # right elbow
     plt.show()
 
