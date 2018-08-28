@@ -58,7 +58,7 @@ if __name__ == '__main__':
     # lr_multipliers = get_lr_multipliers(new_model)
     # multisgd = MultiSGD(lr=base_lr, momentum=momentum, decay=0.0, nesterov=True, lr_mult=lr_multipliers)
     adam = keras.optimizers.Adam(lr=base_lr)
-    new_model.compile(optimizer=adam, loss=loss_funcs, metrics=['accuracy'])
+    new_model.compile(optimizer=adam, loss='mean_squared_error')
 
     print(new_model.summary())
 
