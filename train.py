@@ -1,52 +1,14 @@
 import argparse
-import re
 
 import keras
 import tensorflow as tf
 from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
-from keras.layers.convolutional import Conv2D
 from keras.utils import multi_gpu_model
 
 from config import patience, epochs, num_train_samples, num_valid_samples, batch_size, base_lr
 from data_generator import train_gen, valid_gen
 from model import build_model
-from utils import get_available_gpus, get_available_cpus, get_loss_funcs
-
-
-def get_lr_multipliers(model):
-    """
-    Setup multipliers for stageN layers (kernel and bias)
-    :param model:
-    :return: dictionary key: layer name , value: multiplier
-    """
-    lr_mult = dict()
-    for layer in model.layers:
-
-        if isinstance(layer, Conv2D):
-
-            # stage = 1
-            if re.match("Mconv\d_stage1.*", layer.name):
-                kernel_name = layer.weights[0].name
-                bias_name = layer.weights[1].name
-                lr_mult[kernel_name] = 1
-                lr_mult[bias_name] = 2
-
-            # stage > 1
-            elif re.match("Mconv\d_stage.*", layer.name):
-                kernel_name = layer.weights[0].name
-                bias_name = layer.weights[1].name
-                lr_mult[kernel_name] = 4
-                lr_mult[bias_name] = 8
-
-            # vgg
-            else:
-                kernel_name = layer.weights[0].name
-                bias_name = layer.weights[1].name
-                lr_mult[kernel_name] = 1
-                lr_mult[bias_name] = 2
-
-    return lr_mult
-
+from utils import get_available_gpus, get_loss_funcs, ensure_folder
 
 if __name__ == '__main__':
     # Parse arguments
@@ -93,7 +55,7 @@ if __name__ == '__main__':
     loss_funcs = get_loss_funcs()
 
     # sgd optimizer with lr multipliers
-    lr_multipliers = get_lr_multipliers(new_model)
+    # lr_multipliers = get_lr_multipliers(new_model)
     # multisgd = MultiSGD(lr=base_lr, momentum=momentum, decay=0.0, nesterov=True, lr_mult=lr_multipliers)
     adam = keras.optimizers.Adam(lr=base_lr)
     new_model.compile(optimizer=adam, loss=loss_funcs, metrics=['accuracy'])
@@ -103,6 +65,7 @@ if __name__ == '__main__':
     # Final callbacks
     callbacks = [tensor_board, model_checkpoint, early_stop, reduce_lr]
 
+    ensure_folder('models')
     # Start Fine-tuning
     new_model.fit_generator(train_gen(),
                             steps_per_epoch=num_train_samples // batch_size,
@@ -111,6 +74,5 @@ if __name__ == '__main__':
                             epochs=epochs,
                             verbose=1,
                             callbacks=callbacks,
-                            use_multiprocessing=True,
-                            workers=get_available_cpus() // 2
+                            use_multiprocessing=False
                             )
