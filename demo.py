@@ -44,7 +44,7 @@ if __name__ == '__main__':
     print("Shape after resize (heatmap): " + str(heatmap.shape))
 
     heatmap = np.expand_dims(heatmap[:, :, 1], -1)
-    image = imageToTest * 0.5 + heatmap * 0.5
+    image = imageToTest * 0.5 + heatmap * 255 * 0.5
     image = image.astype(np.uint8)
     cv.imwrite('images/demo.png', image)
 
