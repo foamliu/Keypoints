@@ -42,6 +42,7 @@ if __name__ == '__main__':
     # extract outputs, resize, and remove padding
     heatmap = np.squeeze(output_blobs[1])  # output 1 is heatmaps
     heatmap = cv.resize(heatmap, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+    print("Shape after resize (heatmap): " + str(heatmap.shape))
 
     paf = np.squeeze(output_blobs[0])  # output 0 is PAFs
     paf = cv.resize(paf, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
