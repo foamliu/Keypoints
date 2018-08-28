@@ -5,7 +5,7 @@ import keras.backend as K
 import numpy as np
 import pylab as plt
 
-from config import image_h, image_w, num_connections, num_joints_and_bkg
+from config import image_h, image_w
 from data_utils import ALL_PAF_MASK, ALL_HEATMAP_MASK
 from model import build_model
 from utils import get_best_model
@@ -25,23 +25,15 @@ if __name__ == '__main__':
     batch_heatmap_masks = np.expand_dims(ALL_HEATMAP_MASK, 0)
 
     output_blobs = model.predict([input_img, batch_paf_masks, batch_heatmap_masks])
-    print("Output shape (heatmap): " + str(output_blobs[1].shape))
 
     # extract outputs, resize, and remove padding
     heatmap = np.squeeze(output_blobs[1])  # output 1 is heatmaps
     heatmap = cv.resize(heatmap, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-    print("Shape after resize (heatmap): " + str(heatmap.shape))
+    print("Output shape (heatmap): " + str(heatmap.shape))
 
     # visualization
-    plt.imshow(imageToTest[:, :, [2, 1, 0]])
+    plt.imshow(imageToTest[:, :, ::-1])
     plt.imshow(heatmap[:, :, 1], alpha=.5)  # right elbow
     plt.savefig('images/demo.png')
-
-    # paf = np.squeeze(output_blobs[0])  # output 0 is PAFs
-    # paf = cv.resize(paf, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-    #
-    # plt.imshow(imageToTest[:, :, [2, 1, 0]])
-    # plt.imshow(paf[:, :, 6], alpha=.5)  # right elbow
-    # plt.show()
 
     K.clear_session()

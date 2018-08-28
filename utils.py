@@ -70,18 +70,3 @@ def get_best_model():
         best_index = int(np.argmin(losses))
         filename = os.path.join('models', files[best_index])
     return filename
-
-
-def create_all_mask(mask, num, stride):
-    """
-    Helper function to create a stack of scaled down mask.
-    :param mask: mask image
-    :param num: number of layers
-    :param stride: parameter used to scale down the mask image because it has
-    the same size as orginal image. We need the size of network output.
-    :return:
-    """
-    scale_factor = 1.0 / stride
-    small_mask = cv.resize(mask, (0, 0), fx=scale_factor, fy=scale_factor, interpolation=cv.INTER_CUBIC)
-    small_mask = small_mask[:, :, np.newaxis]
-    return np.repeat(small_mask, num, axis=2)

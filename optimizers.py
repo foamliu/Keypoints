@@ -1,6 +1,6 @@
-from keras.optimizers import Optimizer
 from keras import backend as K
 from keras.legacy import interfaces
+from keras.optimizers import Optimizer
 
 
 class MultiSGD(Optimizer):

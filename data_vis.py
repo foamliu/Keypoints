@@ -2,8 +2,8 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 import numpy as np
 
-from data_generator import DataGenSequence
 from config import num_joints
+from data_generator import DataGenSequence
 
 
 def _get_bgimg(inp, target_size=None):
@@ -147,4 +147,3 @@ if __name__ == '__main__':
         plt.imshow(image)
         plt.imshow(pafmap2, alpha=.5)
         plt.savefig('images/datav_paf_dy_{}.png'.format(j))
-

@@ -96,7 +96,7 @@ if __name__ == '__main__':
     # sgd optimizer with lr multipliers
     lr_multipliers = get_lr_multipliers(new_model)
     multisgd = MultiSGD(lr=base_lr, momentum=momentum, decay=0.0,
-                        nesterov=False, lr_mult=lr_multipliers)
+                        nesterov=True, lr_mult=lr_multipliers)
     new_model.compile(optimizer=multisgd, loss=loss_funcs, metrics=['accuracy'])
 
     print(new_model.summary())
