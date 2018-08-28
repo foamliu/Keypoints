@@ -141,7 +141,7 @@ if __name__ == '__main__':
         # plt.imshow(heatmap1[:, :], alpha=.5)
         # plt.savefig('images/datav_heatmap_{}.png'.format(j))
         heatmap = np.expand_dims(heatmap1, -1)
-        heatmap = image * 0.5 + heatmap * 0.5
+        heatmap = image * 0.5 + heatmap * 255 * 0.5
         heatmap = heatmap.astype(np.uint8)
         cv.imwrite('images/datav_heatmap_{}.png'.format(j), heatmap)
 
