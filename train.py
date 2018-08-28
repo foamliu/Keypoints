@@ -7,10 +7,9 @@ from keras.callbacks import ModelCheckpoint, EarlyStopping, ReduceLROnPlateau
 from keras.layers.convolutional import Conv2D
 from keras.utils import multi_gpu_model
 
-from config import patience, epochs, num_train_samples, num_valid_samples, batch_size, base_lr, momentum
+from config import patience, epochs, num_train_samples, num_valid_samples, batch_size, base_lr
 from data_generator import train_gen, valid_gen
 from model import build_model
-from optimizers import MultiSGD
 from utils import get_available_gpus, get_available_cpus, get_loss_funcs
 
 
@@ -95,9 +94,9 @@ if __name__ == '__main__':
 
     # sgd optimizer with lr multipliers
     lr_multipliers = get_lr_multipliers(new_model)
-    multisgd = MultiSGD(lr=base_lr, momentum=momentum, decay=0.0,
-                        nesterov=True, lr_mult=lr_multipliers)
-    new_model.compile(optimizer=multisgd, loss=loss_funcs, metrics=['accuracy'])
+    # multisgd = MultiSGD(lr=base_lr, momentum=momentum, decay=0.0, nesterov=True, lr_mult=lr_multipliers)
+    adam = keras.optimizers.Adam(lr=base_lr)
+    new_model.compile(optimizer=adam, loss=loss_funcs, metrics=['accuracy'])
 
     print(new_model.summary())
 
