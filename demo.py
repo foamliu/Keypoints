@@ -34,6 +34,7 @@ if __name__ == '__main__':
     # visualization
     plt.imshow(imageToTest[:, :, ::-1])
     plt.imshow(heatmap[:, :, 1], alpha=.5)  # right elbow
+    np.set_printoptions(threshold=np.inf)
     print(heatmap[:, :, 1])
     plt.savefig('images/demo.png')
 
