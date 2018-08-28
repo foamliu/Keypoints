@@ -125,8 +125,6 @@ if __name__ == '__main__':
     for j in range(num_joints):
         body_part = j
         paf_num = j
-        # print(batch_images.shape)
-        item = batch_images[j], batch_pafmaps[j], batch_heatmaps[j]
 
         image = batch_images[j]
         pafmap = batch_pafmaps[j]
