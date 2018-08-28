@@ -133,21 +133,20 @@ if __name__ == '__main__':
         heatmap = batch_heatmaps[j]
 
         image = ((image + 0.5) * 256).astype(np.uint8)
-        image = image[:, :, ::-1]
-        cv.imwrite('images/datav_image_{}.png'.format(j), image)
+        cv.imwrite('images/datav_image_{}.png'.format(j), image[:, :, ::-1])
 
         heatmap1 = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-        plt.imshow(image[:, :, [2, 1, 0]])
-        plt.imshow(heatmap1[:, :], alpha=.5)
+        plt.imshow(image)
+        plt.imshow(heatmap1, alpha=.5)
         plt.savefig('images/datav_heatmap_{}.png'.format(j))
 
         pafmap1 = cv.resize(pafmap[:, :, paf_num * 2], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-        plt.imshow(image[:, :, [2, 1, 0]])
+        plt.imshow(image)
         plt.imshow(pafmap1, alpha=.5)
         plt.savefig('images/datav_paf_dx_{}.png'.format(j))
 
         pafmap2 = cv.resize(pafmap[:, :, paf_num * 2 + 1], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-        plt.imshow(image[:, :, [2, 1, 0]])
+        plt.imshow(image)
         plt.imshow(pafmap2, alpha=.5)
         plt.savefig('images/datav_paf_dy_{}.png'.format(j))
 
