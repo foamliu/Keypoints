@@ -6,10 +6,9 @@ import numpy as np
 import pylab as plt
 
 from config import image_h, image_w, num_connections, num_joints_and_bkg
+from data_utils import ALL_PAF_MASK, ALL_HEATMAP_MASK
 from model import build_model
 from utils import get_best_model
-from data_utils import ALL_PAF_MASK, ALL_HEATMAP_MASK
-
 
 if __name__ == '__main__':
     model = build_model()
@@ -44,16 +43,21 @@ if __name__ == '__main__':
     heatmap = cv.resize(heatmap, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
     print("Shape after resize (heatmap): " + str(heatmap.shape))
 
-    paf = np.squeeze(output_blobs[0])  # output 0 is PAFs
-    paf = cv.resize(paf, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+    heatmap = np.expand_dims(heatmap[:, :, 1], -1)
+    image = imageToTest * 0.5 + heatmap * 0.5
+    image = image.astype(np.uint8)
+    cv.imwrite('images/demo.png', image)
 
     # visualization
     plt.imshow(imageToTest[:, :, [2, 1, 0]])
     plt.imshow(heatmap[:, :, 1], alpha=.5)  # right elbow
     plt.show()
 
-    plt.imshow(imageToTest[:, :, [2, 1, 0]])
-    plt.imshow(paf[:, :, 6], alpha=.5)  # right elbow
-    plt.show()
+    # paf = np.squeeze(output_blobs[0])  # output 0 is PAFs
+    # paf = cv.resize(paf, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+    #
+    # plt.imshow(imageToTest[:, :, [2, 1, 0]])
+    # plt.imshow(paf[:, :, 6], alpha=.5)  # right elbow
+    # plt.show()
 
     K.clear_session()
