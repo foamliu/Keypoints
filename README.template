@@ -83,6 +83,9 @@ $ python pre-process.py
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_12.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_12.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_12.png) | $(joint_pair_12) |
 |![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_image_13.png)  | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dx_13.png) | ![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_dy_13.png) | $(joint_pair_13) |
 
+右肩指向右肘的PAF例子：
+![image](https://github.com/foamliu/Keypoints/raw/master/images/datav_paf_vectors.png)
+
 ## 训练
 ```bash
 $ python train.py
