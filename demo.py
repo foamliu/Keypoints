@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     # visualization
     plt.imshow(imageToTest[:, :, [2, 1, 0]])
-    plt.imshow(heatmap[:, :, 1], alpha=.5)  # right elbow
+    plt.imshow(heatmap, alpha=.5)  # right elbow
     plt.show()
 
     # paf = np.squeeze(output_blobs[0])  # output 0 is PAFs
