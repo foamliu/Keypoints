@@ -28,14 +28,16 @@ if __name__ == '__main__':
 
     # extract outputs, resize, and remove padding
     heatmap = np.squeeze(output_blobs[1])  # output 1 is heatmaps
-    heatmap = cv.resize(heatmap, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
     print("Output shape (heatmap): " + str(heatmap.shape))
+    np.set_printoptions(threshold=np.inf)
+    print(heatmap[:, :, 1])
+
+    heatmap = cv.resize(heatmap, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
 
     # visualization
     plt.imshow(imageToTest[:, :, ::-1])
     plt.imshow(heatmap[:, :, 1], alpha=.5)  # right elbow
-    np.set_printoptions(threshold=np.inf)
-    print(heatmap[:, :, 1])
+
     plt.savefig('images/demo.png')
 
     K.clear_session()
