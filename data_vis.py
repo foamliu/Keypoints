@@ -147,3 +147,29 @@ if __name__ == '__main__':
         plt.imshow(image)
         plt.imshow(pafmap2, alpha=.5)
         plt.savefig('images/datav_paf_dy_{}.png'.format(j))
+
+    from numpy import ma
+    image = batch_images[0]
+    image = ((image + 0.5) * 256).astype(np.uint8)
+    pafmap = batch_pafmaps[0]
+
+    paf_num1 = 4    # RShoulder
+    paf_num2 = 5    # RElbow
+
+    U = cv.resize(pafmap[:, :, paf_num1], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC) * -1
+    V = cv.resize(pafmap[:, :, paf_num2], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
+    X, Y = np.meshgrid(np.arange(U.shape[1]), np.arange(U.shape[0]))
+    M = np.zeros(U.shape, dtype='bool')
+    M[U ** 2 + V ** 2 < 0.5 * 0.5] = True
+    U = ma.masked_array(U, mask=M)
+    V = ma.masked_array(V, mask=M)
+
+    plt.figure()
+    plt.imshow(image[:, :, [2, 1, 0]], alpha=.5)
+    s = 5
+    Q = plt.quiver(X[::s, ::s], Y[::s, ::s], U[::s, ::s], V[::s, ::s],
+                   scale=50, headaxislength=4, alpha=.5, width=0.001, color='r')
+
+    fig = plt.gcf()
+    fig.set_size_inches(10, 10)
+    plt.savefig('images/datav_paf_vectors.png')
