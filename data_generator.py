@@ -50,7 +50,7 @@ class DataGenSequence(Sequence):
             orig_shape = image.shape[:2]
             image = cv.resize(image, (image_h, image_w))
             image = image[:, :, ::-1]
-            batch_images[i_batch] = image / 256 - 0.5
+            batch_images[i_batch] = image
             batch_paf_masks[i_batch] = ALL_PAF_MASK
             batch_heatmap_masks[i_batch] = ALL_HEATMAP_MASK
 

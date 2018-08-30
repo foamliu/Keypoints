@@ -19,7 +19,6 @@ if __name__ == '__main__':
     imageToTest = cv.resize(oriImg, (image_h, image_w), interpolation=cv.INTER_CUBIC)
 
     input_img = np.expand_dims(imageToTest, 0)
-    input_img = input_img / 256 - 0.5
 
     batch_paf_masks = np.expand_dims(ALL_PAF_MASK, 0)
     batch_heatmap_masks = np.expand_dims(ALL_HEATMAP_MASK, 0)
