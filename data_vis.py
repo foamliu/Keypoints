@@ -22,17 +22,17 @@ if __name__ == '__main__':
         cv.imwrite('images/datav_image_{}.png'.format(j), image)
 
         heatmap1 = cv.resize(heatmap[:, :, body_part], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-        plt.imshow(image[:, :, ::-1])
+        plt.imshow(image)
         plt.imshow(heatmap1, alpha=.5)
         plt.savefig('images/datav_heatmap_{}.png'.format(j))
 
         pafmap1 = cv.resize(pafmap[:, :, paf_num * 2], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-        plt.imshow(image[:, :, ::-1])
+        plt.imshow(image)
         plt.imshow(pafmap1, alpha=.5)
         plt.savefig('images/datav_paf_dx_{}.png'.format(j))
 
         pafmap2 = cv.resize(pafmap[:, :, paf_num * 2 + 1], (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-        plt.imshow(image[:, :, ::-1])
+        plt.imshow(image)
         plt.imshow(pafmap2, alpha=.5)
         plt.savefig('images/datav_paf_dy_{}.png'.format(j))
 
@@ -53,7 +53,7 @@ if __name__ == '__main__':
     V = ma.masked_array(V, mask=M)
 
     plt.figure()
-    plt.imshow(image[:, :, ::-1], alpha=.5)
+    plt.imshow(image, alpha=.5)
     s = 5
     Q = plt.quiver(X[::s, ::s], Y[::s, ::s], U[::s, ::s], V[::s, ::s],
                    scale=50, headaxislength=4, alpha=.5, width=0.001, color='r')
