@@ -31,7 +31,7 @@
 
  ![image](https://github.com/foamliu/Keypoints/raw/master/images/keypoint-example.png)
 
-下载点这里：[人体骨骼关键点数据集](https://challenger.ai/datasets/keypoint)，放在 data 目录下。
+下载点这里：[人体骨骼关键点数据集](https://challenger.ai/datasets/)，放在 data 目录下。
 
 # 网络结构
 
