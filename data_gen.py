@@ -8,7 +8,7 @@ import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-from config import train_image_folder, train_annotations_filename, valid_image_folder, \
+from config import im_size, train_image_folder, train_annotations_filename, valid_image_folder, \
     valid_annotations_filename
 
 # Data augmentation and normalization for training
@@ -23,6 +23,21 @@ data_transforms = {
         transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
     ]),
 }
+
+
+def adjust_human_annot(human_annot, w_ratio, h_ratio):
+    human_annot[0] = human_annot[0] * w_ratio
+    human_annot[1] = human_annot[1] * h_ratio
+    human_annot[2] = human_annot[2] * w_ratio
+    human_annot[3] = human_annot[3] * h_ratio
+    return human_annot
+
+
+def adjust_keypoint_annot(keypoint_annot, w_ratio, h_ratio):
+    for i in range(14):
+        keypoint_annot[3 * i] = keypoint_annot[3 * i] * w_ratio
+        keypoint_annot[3 * i] = keypoint_annot[3 * i] * h_ratio
+    return keypoint_annot
 
 
 class KpDataset(Dataset):
@@ -47,22 +62,23 @@ class KpDataset(Dataset):
         filename = os.path.join(self.image_folder, '{}.jpg'.format(image_id))
         img = cv.imread(filename)
         h, w = img.shape[:2]
-        x = torch.zeros((3, h, w), dtype=torch.float)
+        w_ratio, h_ratio = im_size / w, m_size / h
+        x = torch.zeros((3, im_size, im_size), dtype=torch.float)
         img = transforms.ToPILImage()(img)
         img = self.transformer(img)
         x[:, :, :] = img
 
         num_humen = len(human_annots)
-        boxes = np.zeros((num_humen, 4), dtype=np.int)
-        labels = np.zeros((num_humen, 1), dtype=np.int)
-        keypoints = np.zeros((num_humen, 14, 3), dtype=np.int)
+        boxes = np.zeros((num_humen, 4), dtype=np.float)
+        labels = np.zeros((num_humen, 1), dtype=np.float)
+        keypoints = np.zeros((num_humen, 14, 3), dtype=np.float)
 
         for i in range(num_humen):
             key = 'human' + str(i + 1)
             human_annot = human_annots[key]
-            boxes[i] = np.array(human_annot)
+            boxes[i] = adjust_human_annot(np.array(human_annot), w_ratio, h_ratio)
             keypoint_annot = keypoint_annots[key]
-            keypoints[i] = np.array(keypoint_annot).reshape(14, 3)
+            keypoints[i] = adjust_keypoint_annot(np.array(keypoint_annot).reshape(14, 3), w_ratio, h_ratio)
             labels[i] = 1
 
         target = dict()
