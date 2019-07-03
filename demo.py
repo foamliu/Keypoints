@@ -27,12 +27,12 @@ if __name__ == '__main__':
     bgr_img = cv.imread(test_image)  # B,G,R order
     h, w = bgr_img.shape[:2]
 
-    x_test = torch.zeros((1, 3, h, w), dtype=torch.float)
+    x_test = torch.zeros((3, h, w), dtype=torch.float)
     img = transforms.ToPILImage()(bgr_img)
     img = transformer(img)
-    x_test[0:, :, :, :] = img
-    x_test = [torch.rand(3, 300, 400), torch.rand(3, 500, 400)]
-    predictions = model(x_test)[0]
+    x_test[:, :, :] = img
+
+    predictions = model([x_test])[0]
     predictions = predictions.cpu.numpy()
 
     boxes = predictions['boxes']
