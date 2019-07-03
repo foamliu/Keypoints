@@ -27,10 +27,12 @@ if __name__ == '__main__':
 
     test_image = 'images/ski.jpg'
     bgr_img = cv.imread(test_image)  # B,G,R order
-    h, w = bgr_img.shape[:2]
+    bgr_img = cv.resize(bgr_img, (400, 300))
+    rgb_img = cv.cvtColor(bgr_img, cv.COLOR_BGR2RGB)
+    h, w = rgb_img.shape[:2]
 
     x_test = torch.zeros((3, h, w), dtype=torch.float)
-    img = transforms.ToPILImage()(bgr_img)
+    img = transforms.ToPILImage()(rgb_img)
     img = transformer(img)
     x_test[:, :, :] = img
 
