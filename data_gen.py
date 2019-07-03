@@ -85,7 +85,7 @@ class KpDataset(Dataset):
         # target['labels'] = labels
         # target['keypoints'] = keypoints
         # , (boxes, labels, keypoints)
-        return img, target
+        return img, boxes
 
     def __len__(self):
         return len(self.samples)
