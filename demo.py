@@ -33,14 +33,14 @@ if __name__ == '__main__':
     x_test[:, :, :] = img
 
     predictions = model([x_test])[0]
-    predictions = predictions.cpu.numpy()
+    predictions = predictions
 
     boxes = predictions['boxes']
     labels = predictions['labels']
     scores = predictions['scores']
     keypoints = predictions['keypoints']
 
-    print('boxes.shape: ' + str(boxes.shape))
-    print('labels.shape: ' + str(labels.shape))
-    print('scores.shape: ' + str(scores.shape))
-    print('keypoints.shape: ' + str(keypoints.shape))
+    print('boxes.size(): ' + str(boxes.size()))
+    print('labels.size(): ' + str(labels.size()))
+    print('scores.size(): ' + str(scores.size()))
+    print('keypoints.size(): ' + str(keypoints.size()))
