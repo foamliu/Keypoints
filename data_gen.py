@@ -8,7 +8,6 @@ from torchvision import transforms
 
 from config import im_size, train_image_folder, train_annotations_filename, valid_image_folder, \
     valid_annotations_filename
-from data_utils import from_raw_keypoints
 
 # Data augmentation and normalization for training
 # Just normalization for validation
