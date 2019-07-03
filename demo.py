@@ -1,42 +1,46 @@
 # import the necessary packages
-
 import cv2 as cv
-import keras.backend as K
-import numpy as np
-import pylab as plt
+import torch
+import torchvision
+from torchvision import transforms
 
-from config import image_h, image_w
-from data_utils import ALL_PAF_MASK, ALL_HEATMAP_MASK
-from model import build_model
-from utils import get_best_model
+# Data augmentation and normalization for training
+# Just normalization for validation
+data_transforms = {
+    'train': transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225]),
+    ]),
+    'valid': transforms.Compose([
+        transforms.ToTensor(),
+        transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])
+    ]),
+}
 
 if __name__ == '__main__':
-    model = build_model()
-    model.load_weights(get_best_model())
+    model = torchvision.models.detection.keypointrcnn_resnet50_fpn(pretrained=True)
+    model.eval()
+
+    transformer = data_transforms['valid']
 
     test_image = 'images/ski.jpg'
-    oriImg = cv.imread(test_image)  # B,G,R order
-    imageToTest = cv.resize(oriImg, (image_h, image_w), interpolation=cv.INTER_CUBIC)
+    bgr_img = cv.imread(test_image)  # B,G,R order
+    h, w = bgr_img.shape[:2]
 
-    input_img = np.expand_dims(imageToTest, 0)
+    x_test = torch.zeros((1, 3, h, w), dtype=torch.float)
+    img = transforms.ToPILImage()(bgr_img)
+    img = transformer(img)
+    x_test[0:, :, :, :] = img
 
-    batch_paf_masks = np.expand_dims(ALL_PAF_MASK, 0)
-    batch_heatmap_masks = np.expand_dims(ALL_HEATMAP_MASK, 0)
+    predictions = model(x_test)[0]
+    predictions = predictions.cpu.numpy()
 
-    output_blobs = model.predict([input_img, batch_paf_masks, batch_heatmap_masks])
+    boxes = predictions['boxes']
+    labels = predictions['labels']
+    scores = predictions['scores']
+    keypoints = predictions['keypoints']
 
-    # extract outputs, resize, and remove padding
-    heatmap = np.squeeze(output_blobs[1])  # output 1 is heatmaps
-    print("Output shape (heatmap): " + str(heatmap.shape))
-    np.set_printoptions(threshold=np.inf)
-    print(heatmap[:, :, 1])
-
-    heatmap = cv.resize(heatmap, (0, 0), fx=8, fy=8, interpolation=cv.INTER_CUBIC)
-
-    # visualization
-    plt.imshow(imageToTest[:, :, ::-1])
-    plt.imshow(heatmap[:, :, 1], alpha=.5)  # right elbow
-
-    plt.savefig('images/demo.png')
-
-    K.clear_session()
+    print('boxes.shape: ' + str(boxes.shape))
+    print('labels.shape: ' + str(labels.shape))
+    print('scores.shape: ' + str(scores.shape))
+    print('keypoints.shape: ' + str(keypoints.shape))

@@ -1,15 +1,15 @@
-# Human KeyPoints
+# Person Keypoint Detection
 
-Human KeyPoints in PyTorch
+Person Keypoint Detection in PyTorch
 
 ## Dependencies
 - PyTorch 1.0
 
 # Dataset
 
- ![image](https://github.com/foamliu/Keypoints/raw/master/images/keypoint-example.png)
+![image](https://github.com/foamliu/Keypoints/raw/master/images/keypoint-example.png)
 
-Download：[Dataset](https://challenger.ai/) into data folder.
+Download: [Dataset](https://challenger.ai/) into data folder.
 
 # Architecture
 
