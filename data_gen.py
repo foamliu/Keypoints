@@ -3,6 +3,7 @@ import json
 import os
 
 import cv2 as cv
+import numpy as np
 import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
@@ -52,22 +53,22 @@ class KpDataset(Dataset):
         x[:, :, :] = img
 
         num_humen = len(human_annots)
-        boxes = torch.zeros((num_humen, 4), dtype=torch.int)
-        labels = torch.zeros((num_humen, 1), dtype=torch.int)
-        keypoints = torch.zeros((num_humen, 14, 3), dtype=torch.int)
+        boxes = np.zeros((num_humen, 4), dtype=np.int)
+        labels = np.zeros((num_humen, 1), dtype=np.int)
+        keypoints = np.zeros((num_humen, 14, 3), dtype=np.int)
 
         for i in range(num_humen):
             key = 'human' + str(i + 1)
             human_annot = human_annots[key]
-            boxes[i] = human_annot
+            boxes[i] = np.array(human_annot)
             keypoint_annot = keypoint_annots[i]
-            keypoints[i] = keypoint_annot
+            keypoints[i] = np.array(keypoint_annot).reshape(14, 3)
             labels[i] = 1
 
         target = dict()
-        target['boxes'] = boxes
-        target['labels'] = labels
-        target['keypoints'] = keypoints
+        target['boxes'] = torch.from_numpy(boxes)
+        target['labels'] = torch.from_numpy(labels)
+        target['keypoints'] = torch.from_numpy(keypoints)
 
         return x, target
 
