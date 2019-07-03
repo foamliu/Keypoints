@@ -14,14 +14,18 @@ def ensure_folder(folder):
         os.makedirs(folder)
 
 
-def draw_bboxes(img, boxes, keypoints):
-    for b in boxes:
+def draw_bboxes(img, boxes, labels, scores, keypoints):
+    for i, b in enumerate(boxes):
         cv.rectangle(img, (int(b[0]), int(b[1])), (int(b[2]), int(b[3])), (255, 255, 255), 1)
 
-    for person in keypoints:
+        person = keypoints[i]
         for kp in person:
             cv.circle(img, (int(kp[0]), int(kp[1])), 1, (0, 255, 0), -1)
 
-        break  # only first
+        l = labels[i]
+        s = scores[i]
+
+        print(l)
+        print(s)
 
     return img

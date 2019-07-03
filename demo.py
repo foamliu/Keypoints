@@ -3,6 +3,7 @@ import cv2 as cv
 import torch
 import torchvision
 from torchvision import transforms
+
 from utils import draw_bboxes
 
 # Data augmentation and normalization for training
@@ -46,4 +47,4 @@ if __name__ == '__main__':
     # print('scores.size(): ' + str(scores.size()))
     # print('keypoints.size(): ' + str(keypoints.size()))
 
-    img = draw_bboxes(boxes, keypoints)
+    img = draw_bboxes(boxes, labels, scores, keypoints)
