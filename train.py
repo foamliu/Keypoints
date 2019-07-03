@@ -94,13 +94,13 @@ def train(train_loader, model, optimizer, epoch, logger):
     losses = AverageMeter()
 
     # Batches
-    for i, (img, label) in enumerate(train_loader):
+    for i, (img) in enumerate(train_loader):
         # Move to GPU, if available
         img = img.type(torch.FloatTensor).to(device)  # [N, 3, 320, 320]
-        boxes, labels, keypoints = label
-        boxes = boxes.type(torch.FloatTensor).to(device)
-        labels = labels.type(torch.FloatTensor).to(device)
-        keypoints = keypoints.type(torch.FloatTensor).to(device)
+        boxes, labels, keypoints = None, None, None
+        # boxes = boxes.type(torch.FloatTensor).to(device)
+        # labels = labels.type(torch.FloatTensor).to(device)
+        # keypoints = keypoints.type(torch.FloatTensor).to(device)
 
         target = dict()
         target['boxes'] = boxes
