@@ -61,7 +61,7 @@ class KpDataset(Dataset):
             key = 'human' + str(i + 1)
             human_annot = human_annots[key]
             boxes[i] = np.array(human_annot)
-            keypoint_annot = keypoint_annots[i]
+            keypoint_annot = keypoint_annots[key]
             keypoints[i] = np.array(keypoint_annot).reshape(14, 3)
             labels[i] = 1
 
