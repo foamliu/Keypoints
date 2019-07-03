@@ -87,7 +87,7 @@ class KpDataset(Dataset):
         target['labels'] = torch.from_numpy(labels)
         target['keypoints'] = torch.from_numpy(keypoints)
 
-        return x, target
+        return x
 
     def __len__(self):
         return len(self.samples)
