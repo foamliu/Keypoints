@@ -6,7 +6,7 @@ import cv2 as cv
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-from config import im_size, train_image_folder, train_annotations_filename, valid_image_folder, \
+from config import train_image_folder, train_annotations_filename, valid_image_folder, \
     valid_annotations_filename
 
 # Data augmentation and normalization for training
@@ -42,17 +42,17 @@ class KpDataset(Dataset):
         keypoint_annots = item['keypoint_annotations']
         filename = os.path.join(self.image_folder, '{}.jpg'.format(image_id))
         image = cv.imread(filename)
-        orig_shape = image.shape[:2]
-        image = cv.resize(image, (im_size, im_size))
+        h, w = image.shape[:2]
 
-        print(human_annots)
-        print(keypoint_annots)
-        print(orig_shape)
+        print('human_annots: ' + str(human_annots))
+        print('keypoint_annots: ' + str(keypoint_annots))
+
+        print(h, w)
 
         target = dict()
-        target['boxes '] = None
-        target['labels '] = None
-        target['keypoints  '] = None
+        target['boxes'] = None
+        target['labels'] = None
+        target['keypoints'] = None
 
         return image, target
 
