@@ -34,8 +34,8 @@ if __name__ == '__main__':
     img = transformer(img)
     x_test[:, :, :] = img
 
-    predictions = model([x_test])[0]
-    predictions = predictions
+    with torch.no_grad():
+        predictions = model([x_test])[0]
 
     boxes = predictions['boxes'].cpu().numpy().tolist()
     labels = predictions['labels'].cpu().numpy().tolist()
