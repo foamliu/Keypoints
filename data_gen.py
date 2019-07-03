@@ -4,7 +4,6 @@ import os
 
 import cv2 as cv
 import numpy as np
-import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 
@@ -64,10 +63,9 @@ class KpDataset(Dataset):
         img = cv.resize(img, (im_size, im_size))
         h, w = img.shape[:2]
         w_ratio, h_ratio = im_size / w, im_size / h
-        x = torch.zeros((3, im_size, im_size), dtype=torch.float)
+
         img = transforms.ToPILImage()(img)
         img = self.transformer(img)
-        x[:, :, :] = img
 
         num_humen = len(human_annots)
         boxes = np.zeros((num_humen, 4), dtype=np.float)
@@ -82,12 +80,7 @@ class KpDataset(Dataset):
             keypoints[i] = adjust_keypoint_annot(np.array(keypoint_annot).reshape(14, 3), w_ratio, h_ratio)
             labels[i] = 1
 
-        target = dict()
-        target['boxes'] = torch.from_numpy(boxes)
-        target['labels'] = torch.from_numpy(labels)
-        target['keypoints'] = torch.from_numpy(keypoints)
-
-        return x
+        return img, boxes, labels, keypoints
 
     def __len__(self):
         return len(self.samples)
