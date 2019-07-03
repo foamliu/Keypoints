@@ -47,6 +47,6 @@ if __name__ == '__main__':
     # print('scores.size(): ' + str(scores.size()))
     # print('keypoints.size(): ' + str(keypoints.size()))
 
-    img = draw_bboxes(bgr_img, boxes, labels, scores, keypoints)
+    img = draw_bboxes(bgr_img, boxes, scores, keypoints)
     cv.imshow('image', img)
     cv.waitKey(0)
