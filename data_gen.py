@@ -80,6 +80,11 @@ class KpDataset(Dataset):
             keypoints[i] = adjust_keypoint_annot(np.array(keypoint_annot).reshape(14, 3), w_ratio, h_ratio)
             labels[i] = 1
 
+        print('img.shape: ' + str(img.shape))
+        print('boxes.shape: ' + str(boxes.shape))
+        print('labels.shape: ' + str(labels.shape))
+        print('keypoints.shape: ' + str(keypoints.shape))
+
         return img, boxes, labels, keypoints
 
     def __len__(self):
