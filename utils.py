@@ -17,6 +17,7 @@ def ensure_folder(folder):
 def draw_bboxes(img, boxes, scores, keypoints):
     for i, b in enumerate(boxes):
         x0, y0, x1, y1 = int(b[0]), int(b[1]), int(b[2]), int(b[3])
+        print(x0, y0, x1, y1)
         cv.rectangle(img, (x0, y0), (x1, y1), (255, 255, 255), 1)
 
         s = scores[i]
