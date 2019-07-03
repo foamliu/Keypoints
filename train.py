@@ -94,19 +94,12 @@ def train(train_loader, model, optimizer, epoch, logger):
     losses = AverageMeter()
 
     # Batches
-    for i, (img, alpha_label) in enumerate(train_loader):
+    for i, (img, label) in enumerate(train_loader):
         # Move to GPU, if available
         img = img.type(torch.FloatTensor).to(device)  # [N, 4, 320, 320]
-        alpha_label = alpha_label.type(torch.FloatTensor).to(device)  # [N, 320, 320]
-        alpha_label = alpha_label.reshape((-1, 2, im_size * im_size))  # [N, 320*320]
 
         # Forward prop.
-        alpha_out = model(img)  # [N, 3, 320, 320]
-        alpha_out = alpha_out.reshape((-1, 1, im_size * im_size))  # [N, 320*320]
-
-        # Calculate loss
-        # loss = criterion(alpha_out, alpha_label)
-        loss = alpha_prediction_loss(alpha_out, alpha_label)
+        loss = model(img, label)  # [N, 3, 320, 320]
 
         # Back prop.
         optimizer.zero_grad()
@@ -145,14 +138,12 @@ def valid(valid_loader, model, logger):
 
         # Forward prop.
         alpha_out = model(img)  # [N, 320, 320]
-        alpha_out = alpha_out.reshape((-1, 1, im_size * im_size))  # [N, 320*320]
 
         # Calculate loss
         # loss = criterion(alpha_out, alpha_label)
-        loss = alpha_prediction_loss(alpha_out, alpha_label)
 
         # Keep track of metrics
-        losses.update(loss.item())
+        # losses.update(loss.item())
 
     # Print status
     status = 'Validation: Loss {loss.avg:.4f}\n'.format(loss=losses)

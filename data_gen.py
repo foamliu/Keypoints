@@ -46,9 +46,16 @@ class KpDataset(Dataset):
         orig_shape = image.shape[:2]
         image = cv.resize(image, (im_size, im_size))
 
-        all_joints = from_raw_keypoints(human_annots, keypoint_annots, orig_shape)
+        print(human_annots)
+        print(keypoint_annots)
+        print(orig_shape)
 
-        return image
+        target = dict()
+        target['boxes '] = None
+        target['labels '] = None
+        target['keypoints  '] = None
+
+        return image, target
 
     def __len__(self):
         return len(self.samples)
