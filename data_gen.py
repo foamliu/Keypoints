@@ -3,6 +3,7 @@ import json
 import os
 
 import cv2 as cv
+import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 
@@ -32,6 +33,8 @@ class KpDataset(Dataset):
             self.image_folder = valid_image_folder
             annot_filename = valid_annotations_filename
 
+        self.transformer = data_transforms[split]
+
         with open(annot_filename, 'r') as file:
             self.samples = json.load(file)
 
@@ -41,22 +44,32 @@ class KpDataset(Dataset):
         human_annots = item['human_annotations']
         keypoint_annots = item['keypoint_annotations']
         filename = os.path.join(self.image_folder, '{}.jpg'.format(image_id))
-        image = cv.imread(filename)
-        h, w = image.shape[:2]
+        img = cv.imread(filename)
+        h, w = img.shape[:2]
+        x = torch.zeros((3, h, w), dtype=torch.float)
+        img = transforms.ToPILImage()(img)
+        img = self.transformer(img)
+        x[:, :, :] = img
 
-        print('human_annots: ' + str(human_annots))
-        print('len(human_annots): ' + str(len(human_annots)))
-        print('keypoint_annots: ' + str(keypoint_annots))
-        print('len(keypoint_annots): ' + str(len(keypoint_annots)))
+        num_humen = len(human_annots)
+        boxes = torch.zeros((num_humen, 4), dtype=torch.int)
+        labels = torch.zeros((num_humen, 1), dtype=torch.int)
+        keypoints = torch.zeros((num_humen, 14, 3), dtype=torch.int)
 
-        print(h, w)
+        for i in range(num_humen):
+            key = 'human' + str(i + 1)
+            human_annot = human_annots[key]
+            boxes[i] = human_annot
+            keypoint_annot = keypoint_annots[i]
+            keypoints[i] = keypoint_annot
+            labels[i] = 1
 
         target = dict()
-        target['boxes'] = None
-        target['labels'] = None
-        target['keypoints'] = None
+        target['boxes'] = boxes
+        target['labels'] = labels
+        target['keypoints'] = keypoints
 
-        return image, target
+        return x, target
 
     def __len__(self):
         return len(self.samples)
