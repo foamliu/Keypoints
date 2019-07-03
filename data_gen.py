@@ -85,7 +85,7 @@ class KpDataset(Dataset):
         print('labels.shape: ' + str(labels.shape))
         print('keypoints.shape: ' + str(keypoints.shape))
 
-        return img, boxes, labels, keypoints
+        return img, (boxes, labels, keypoints)
 
     def __len__(self):
         return len(self.samples)
