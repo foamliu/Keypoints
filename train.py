@@ -102,6 +102,7 @@ def train(train_loader, model, optimizer, epoch, logger):
         # labels = labels.type(torch.FloatTensor).to(device)
         # keypoints = keypoints.type(torch.FloatTensor).to(device)
 
+        print(imgs.size())
         print(targets)
         print(targets.size())
 
