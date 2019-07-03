@@ -35,8 +35,8 @@ def adjust_human_annot(human_annot, w_ratio, h_ratio):
 
 def adjust_keypoint_annot(keypoint_annot, w_ratio, h_ratio):
     for i in range(14):
-        keypoint_annot[3 * i] = keypoint_annot[3 * i] * w_ratio
-        keypoint_annot[3 * i] = keypoint_annot[3 * i] * h_ratio
+        keypoint_annot[i][0] = keypoint_annot[i][0] * w_ratio
+        keypoint_annot[i][1] = keypoint_annot[i][1] * h_ratio
     return keypoint_annot
 
 
