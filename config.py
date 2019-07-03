@@ -1,14 +1,21 @@
 import os
 
-image_h, image_w, image_size = 368, 368, 368
+import torch
+
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')  # sets device for model and PyTorch tensors
+
+im_size = 368
 channel = 3
 batch_size = 16
 epochs = 10000
-patience = 50
 weight_decay = 5e-4
-base_lr = 4e-5
 momentum = 0.9
-stages = 6
+
+# Training parameters
+num_workers = 4  # for data-loading; right now, only 1 works with h5py
+grad_clip = 5.  # clip gradients at an absolute value of
+print_freq = 100  # print training/validation stats  every __ batches
+checkpoint = None  # path to checkpoint, None if none
 
 num_train_samples = 210000
 num_valid_samples = 30000
@@ -27,8 +34,8 @@ idx_in_raw_str = [
     'RHip', 'RKnee', 'RAnkle', 'LHip', 'LKnee', 'LAnkle']
 
 joint_pairs = list(zip(
-        [12, 13, 0, 1, 13, 3, 4, 0, 6, 7, 3, 9, 10, 13, 13],
-        [13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 6, 9]))
+    [12, 13, 0, 1, 13, 3, 4, 0, 6, 7, 3, 9, 10, 13, 13],
+    [13, 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 6, 9]))
 
 num_connections = 15
 
