@@ -31,7 +31,7 @@ if __name__ == '__main__':
     img = transforms.ToPILImage()(bgr_img)
     img = transformer(img)
     x_test[0:, :, :, :] = img
-
+    x_test = [torch.rand(3, 300, 400), torch.rand(3, 500, 400)]
     predictions = model(x_test)[0]
     predictions = predictions.cpu.numpy()
 
