@@ -23,8 +23,8 @@ def draw_bboxes(img, boxes, scores, keypoints):
         s = scores[i]
         print(s)
 
-        cv.putText(img, s, (x0 + 1, y0 + 1), cv.FONT_HERSHEY_PLAIN, 1.0, (0, 0, 0), thickness=2, lineType=cv.LINE_AA)
-        cv.putText(img, s, (x0, y0), cv.FONT_HERSHEY_PLAIN, 1.0, (255, 255, 255), lineType=cv.LINE_AA)
+        cv.putText(img, str(s), (x0 + 1, y0 + 1), cv.FONT_HERSHEY_PLAIN, 1.0, (0, 0, 0), thickness=2, lineType=cv.LINE_AA)
+        cv.putText(img, str(s), (x0, y0), cv.FONT_HERSHEY_PLAIN, 1.0, (255, 255, 255), lineType=cv.LINE_AA)
 
         person = keypoints[i]
         for kp in person:
