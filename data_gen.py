@@ -80,8 +80,12 @@ class KpDataset(Dataset):
             keypoints[i] = adjust_keypoint_annot(np.array(keypoint_annot).reshape(14, 3), w_ratio, h_ratio)
             labels[i] = 1
 
+        target = dict()
+        # target['boxes'] = boxes
+        # target['labels'] = labels
+        # target['keypoints'] = keypoints
         # , (boxes, labels, keypoints)
-        return img
+        return img, target
 
     def __len__(self):
         return len(self.samples)
