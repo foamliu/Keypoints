@@ -35,12 +35,12 @@ if __name__ == '__main__':
     x_test[:, :, :] = img
 
     with torch.no_grad():
-        predictions = model([x_test])[0]
+        pred = model([x_test])[0]
 
-    boxes = predictions['boxes'].cpu().numpy().tolist()
-    labels = predictions['labels'].cpu().numpy().tolist()
-    scores = predictions['scores'].cpu().numpy().tolist()
-    keypoints = predictions['keypoints'].cpu().numpy().tolist()
+    boxes = pred['boxes'].cpu().numpy().tolist()
+    labels = pred['labels'].cpu().numpy().tolist()
+    scores = pred['scores'].cpu().numpy().tolist()
+    keypoints = pred['keypoints'].cpu().numpy().tolist()
 
     # print('boxes.size(): ' + str(boxes.size()))
     # print('labels.size(): ' + str(labels.size()))
