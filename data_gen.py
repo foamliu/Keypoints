@@ -45,7 +45,9 @@ class KpDataset(Dataset):
         h, w = image.shape[:2]
 
         print('human_annots: ' + str(human_annots))
+        print('len(human_annots): ' + str(len(human_annots)))
         print('keypoint_annots: ' + str(keypoint_annots))
+        print('len(keypoint_annots): ' + str(len(keypoint_annots)))
 
         print(h, w)
 
