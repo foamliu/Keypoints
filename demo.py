@@ -37,10 +37,10 @@ if __name__ == '__main__':
     predictions = model([x_test])[0]
     predictions = predictions
 
-    boxes = predictions['boxes'].cpu().numpy()
-    labels = predictions['labels'].cpu().numpy()
-    scores = predictions['scores'].cpu().numpy()
-    keypoints = predictions['keypoints'].cpu().numpy()
+    boxes = predictions['boxes'].cpu().numpy().tolist()
+    labels = predictions['labels'].cpu().numpy().tolist()
+    scores = predictions['scores'].cpu().numpy().tolist()
+    keypoints = predictions['keypoints'].cpu().numpy().tolist()
 
     # print('boxes.size(): ' + str(boxes.size()))
     # print('labels.size(): ' + str(labels.size()))
