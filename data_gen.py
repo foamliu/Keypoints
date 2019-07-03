@@ -62,7 +62,7 @@ class KpDataset(Dataset):
         filename = os.path.join(self.image_folder, '{}.jpg'.format(image_id))
         img = cv.imread(filename)
         h, w = img.shape[:2]
-        w_ratio, h_ratio = im_size / w, m_size / h
+        w_ratio, h_ratio = im_size / w, im_size / h
         x = torch.zeros((3, im_size, im_size), dtype=torch.float)
         img = transforms.ToPILImage()(img)
         img = self.transformer(img)
