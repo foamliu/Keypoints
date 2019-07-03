@@ -3,6 +3,7 @@ import cv2 as cv
 import torch
 import torchvision
 from torchvision import transforms
+from utils import draw_bboxes
 
 # Data augmentation and normalization for training
 # Just normalization for validation
@@ -40,7 +41,9 @@ if __name__ == '__main__':
     scores = predictions['scores']
     keypoints = predictions['keypoints']
 
-    print('boxes.size(): ' + str(boxes.size()))
-    print('labels.size(): ' + str(labels.size()))
-    print('scores.size(): ' + str(scores.size()))
-    print('keypoints.size(): ' + str(keypoints.size()))
+    # print('boxes.size(): ' + str(boxes.size()))
+    # print('labels.size(): ' + str(labels.size()))
+    # print('scores.size(): ' + str(scores.size()))
+    # print('keypoints.size(): ' + str(keypoints.size()))
+
+    img = draw_bboxes(boxes, keypoints)
