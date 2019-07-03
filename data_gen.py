@@ -61,6 +61,7 @@ class KpDataset(Dataset):
         keypoint_annots = item['keypoint_annotations']
         filename = os.path.join(self.image_folder, '{}.jpg'.format(image_id))
         img = cv.imread(filename)
+        img = cv.resize(img, (im_size, im_size))
         h, w = img.shape[:2]
         w_ratio, h_ratio = im_size / w, im_size / h
         x = torch.zeros((3, im_size, im_size), dtype=torch.float)
