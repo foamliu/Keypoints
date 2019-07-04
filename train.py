@@ -94,7 +94,7 @@ def train(train_loader, model, optimizer, epoch, logger):
     losses = AverageMeter()
 
     # Batches
-    for data in train_loader:
+    for i, data in enumerate(train_loader):
         print(data)
         img = data['img']
         # Move to GPU, if available
@@ -106,7 +106,6 @@ def train(train_loader, model, optimizer, epoch, logger):
 
         print(imgs.size())
         print(boxes.size())
-
 
         # target = dict()
         # target['boxes'] = boxes
