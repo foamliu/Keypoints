@@ -45,9 +45,9 @@ def train_net(args):
 
     # Custom dataloaders
     train_dataset = KpDataset('train')
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=1, shuffle=True, num_workers=8)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=1, shuffle=True, num_workers=1)
     valid_dataset = KpDataset('valid')
-    valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=1, shuffle=False, num_workers=8)
+    valid_loader = torch.utils.data.DataLoader(valid_dataset, batch_size=1, shuffle=False, num_workers=1)
 
     # Epochs
     for epoch in range(start_epoch, args.end_epoch):
