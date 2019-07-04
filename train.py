@@ -99,7 +99,7 @@ def train(train_loader, model, optimizer, epoch, logger):
         imgs = imgs.type(torch.FloatTensor).to(device)  # [N, 3, 320, 320]
 
         # Forward prop.
-        loss = model(imgs, targets)  # [N, 3, 320, 320]
+        loss = model(imgs, [targets])  # [N, 3, 320, 320]
 
         # Back prop.
         optimizer.zero_grad()
