@@ -64,7 +64,7 @@ class KpDataset(Dataset):
         h, w = img.shape[:2]
         w_ratio, h_ratio = im_size / w, im_size / h
 
-        img = transforms.ToPILImage()(img)
+        img = transforms.ToPILImage()(img).convert('RGB')
         img = self.transformer(img)
 
         num_humen = len(human_annots)
