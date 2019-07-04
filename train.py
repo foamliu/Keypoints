@@ -102,6 +102,9 @@ def train(train_loader, model, optimizer, epoch, logger):
         targets['boxes'] = boxes
         targets['labels'] = labels
         targets['keypoints'] = keypoints
+        print(boxes.size())
+        print(labels.size())
+        print(keypoints.size())
 
         # Forward prop.
         loss = model(imgs, [targets])  # [N, 3, 320, 320]

@@ -82,11 +82,8 @@ class KpDataset(Dataset):
             labels[i] = 1
 
         boxes = torch.from_numpy(boxes)
-        print(boxes.size())
         labels = torch.from_numpy(labels)
-        print(labels.size())
         keypoints = torch.from_numpy(keypoints)
-        print(keypoints.size())
 
         # target = dict()
         # target['boxes'] = boxes
