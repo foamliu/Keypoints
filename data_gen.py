@@ -1,9 +1,10 @@
 # encoding=utf-8
 import json
 import os
-import torch
+
 import cv2 as cv
 import numpy as np
+import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 
@@ -82,13 +83,7 @@ class KpDataset(Dataset):
 
         boxes = torch.from_numpy(boxes)
 
-        data = dict()
-        data['img'] = img
-        data['boxes'] = boxes
-        data['labels'] = labels
-        data['keypoints'] = keypoints
-        # , (boxes, labels, keypoints)
-        return data
+        return {'img': img, 'boxes': boxes, 'labels': labels, 'keypoints': keypoints}
 
     def __len__(self):
         return len(self.samples)
