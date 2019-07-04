@@ -143,7 +143,9 @@ def valid(valid_loader, model, logger):
     losses = AverageMeter()
 
     # Batches
-    for img, alpha_label in valid_loader:
+    for data in valid_loader:
+        print(data)
+        img = data['img']
         # Move to GPU, if available
         img = img.type(torch.FloatTensor).to(device)  # [N, 3, 320, 320]
         alpha_label = alpha_label.type(torch.FloatTensor).to(device)  # [N, 320, 320]

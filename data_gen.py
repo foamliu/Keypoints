@@ -82,15 +82,13 @@ class KpDataset(Dataset):
 
         boxes = torch.from_numpy(boxes)
 
-        print('img.size(): ' + str(img.size()))
-        print('boxes.size(): ' + str(boxes.size()))
-
-        target = dict()
-        # target['boxes'] = boxes
-        # target['labels'] = labels
-        # target['keypoints'] = keypoints
+        data = dict()
+        data['img'] = img
+        data['boxes'] = boxes
+        data['labels'] = labels
+        data['keypoints'] = keypoints
         # , (boxes, labels, keypoints)
-        return img, boxes
+        return data
 
     def __len__(self):
         return len(self.samples)
