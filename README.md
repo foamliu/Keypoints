@@ -1,6 +1,14 @@
 # Person Keypoint Detection
 
-Person Keypoint Detection in PyTorch
+## Performance
+- Test with method whole image.
+- SAD normalized by 1000.
+- Input img is normalized by mean=[0.485, 0.456, 0.406] and std=[0.229, 0.224, 0.225].
+- Both erode and dialte of alpha for trimap
+
+|Methods|SAD|MSE|Update|
+|---|---|---|---|
+|Encoder-Decoder network|40.7|0.014|
 
 ## Dependencies
 - PyTorch 1.0
