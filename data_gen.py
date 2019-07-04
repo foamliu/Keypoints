@@ -88,12 +88,12 @@ class KpDataset(Dataset):
         keypoints = torch.from_numpy(keypoints)
         print(keypoints.size())
 
-        target = dict()
-        target['boxes'] = boxes
-        target['labels'] = labels
-        target['keypoints'] = keypoints
+        # target = dict()
+        # target['boxes'] = boxes
+        # target['labels'] = labels
+        # target['keypoints'] = keypoints
 
-        return img, target
+        return img, boxes, labels, keypoints
 
     def __len__(self):
         return len(self.samples)
