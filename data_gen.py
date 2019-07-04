@@ -8,7 +8,6 @@ import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-from config import device
 from config import im_size, train_image_folder, train_annotations_filename, valid_image_folder, \
     valid_annotations_filename
 
@@ -87,9 +86,9 @@ class KpDataset(Dataset):
         keypoints = torch.from_numpy(keypoints)
 
         target = dict()
-        target['boxes'] = boxes.type(torch.FloatTensor).to(device)
-        target['labels'] = labels.type(torch.FloatTensor).to(device)
-        target['keypoints'] = keypoints.type(torch.FloatTensor).to(device)
+        target['boxes'] = boxes
+        target['labels'] = labels
+        target['keypoints'] = keypoints
 
         return img, target
 
