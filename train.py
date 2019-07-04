@@ -94,7 +94,9 @@ def train(train_loader, model, optimizer, epoch, logger):
     losses = AverageMeter()
 
     # Batches
-    for i, (imgs, boxes) in enumerate(train_loader):
+    for i, data in enumerate(train_loader):
+        print(data)
+        img = data['img']
         # Move to GPU, if available
         imgs = imgs.type(torch.FloatTensor).to(device)  # [N, 3, 320, 320]
         boxes, labels, keypoints = None, None, None
