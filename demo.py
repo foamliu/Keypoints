@@ -44,10 +44,10 @@ if __name__ == '__main__':
     scores = pred['scores'].cpu().numpy().tolist()
     keypoints = pred['keypoints'].cpu().numpy().tolist()
 
-    # print('boxes.size(): ' + str(boxes.size()))
-    # print('labels.size(): ' + str(labels.size()))
-    # print('scores.size(): ' + str(scores.size()))
-    # print('keypoints.size(): ' + str(keypoints.size()))
+    print('boxes.size(): ' + str(boxes.size()))
+    print('labels.size(): ' + str(labels.size()))
+    print('scores.size(): ' + str(scores.size()))
+    print('keypoints.size(): ' + str(keypoints.size()))
 
     img = draw_bboxes(bgr_img, boxes, scores, keypoints)
     # cv.imshow('image', img)
