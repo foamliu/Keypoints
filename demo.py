@@ -50,5 +50,6 @@ if __name__ == '__main__':
     # print('keypoints.size(): ' + str(keypoints.size()))
 
     img = draw_bboxes(bgr_img, boxes, scores, keypoints)
-    cv.imshow('image', img)
-    cv.waitKey(0)
+    # cv.imshow('image', img)
+    # cv.waitKey(0)
+    cv.imwrite('result.jpg', img)
