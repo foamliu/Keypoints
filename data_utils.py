@@ -3,7 +3,7 @@ import math
 
 import numpy as np
 
-from config import num_joints, joint_pairs, num_connections, num_joints_and_bkg, image_h, image_w
+from hparams import num_joints, joint_pairs, num_connections, num_joints_and_bkg, image_h, image_w
 
 ALL_PAF_MASK = np.ones((46, 46, num_connections * 2), dtype=np.uint8)
 ALL_HEATMAP_MASK = np.ones((46, 46, num_joints_and_bkg), dtype=np.uint8)

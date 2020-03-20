@@ -8,7 +8,7 @@ import torch
 from torch.utils.data import Dataset
 from torchvision import transforms
 
-from config import im_size, train_image_folder, train_annotations_filename, valid_image_folder, \
+from hparams import im_size, train_image_folder, train_annotations_filename, valid_image_folder, \
     valid_annotations_filename
 
 # Data augmentation and normalization for training

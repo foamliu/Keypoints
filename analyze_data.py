@@ -5,7 +5,7 @@ import cv2 as cv
 import numpy as np
 from tqdm import tqdm
 
-from config import train_image_folder, train_annotations_filename
+from hparams import train_image_folder, train_annotations_filename
 
 if __name__ == '__main__':
     names = [n for n in os.listdir(train_image_folder) if n.lower().endswith('.jpg')]

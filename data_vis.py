@@ -2,7 +2,7 @@ import cv2 as cv
 import matplotlib.pyplot as plt
 import numpy as np
 
-from config import num_joints
+from hparams import num_joints
 from data_gen import DataGenSequence
 
 if __name__ == '__main__':

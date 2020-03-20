@@ -1,7 +1,7 @@
 import os
 import zipfile
 
-from config import train_folder, valid_folder, test_a_folder, test_b_folder
+from hparams import train_folder, valid_folder, test_a_folder, test_b_folder
 
 
 def ensure_folder(folder):
