@@ -49,9 +49,9 @@ MODEL_EXTRAS = {
 # common params for NETWORK
 config.MODEL = edict()
 config.MODEL.NAME = 'pose_resnet'
-config.MODEL.INIT_WEIGHTS = True
+config.MODEL.INIT_WEIGHTS = False
 config.MODEL.PRETRAINED = ''
-config.MODEL.NUM_JOINTS = 16
+config.MODEL.NUM_JOINTS = 14
 config.MODEL.IMAGE_SIZE = [256, 256]  # width * height, ex: 192 * 256
 config.MODEL.EXTRA = MODEL_EXTRAS[config.MODEL.NAME]
 
