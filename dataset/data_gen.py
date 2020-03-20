@@ -5,9 +5,9 @@ import os
 import cv2 as cv
 import numpy as np
 import torch
-from torch.utils.data import Dataset
 from torchvision import transforms
 
+from dataset.JointsDataset import JointsDataset
 from hparams import im_size, train_image_folder, train_annotations_filename, valid_image_folder, \
     valid_annotations_filename
 
@@ -40,12 +40,16 @@ def adjust_keypoint_annot(keypoint_annot, w_ratio, h_ratio):
     return keypoint_annot
 
 
-class KpDataset(Dataset):
-    def __init__(self, split):
-        if split == 'train':
+class KpDataset(JointsDataset):
+    def __init__(self, cfg, root, image_set, is_train, transform=None):
+        super().__init__(cfg, root, image_set, is_train, transform)
+
+        if is_train:
+            split = 'train'
             self.image_folder = train_image_folder
             annot_filename = train_annotations_filename
         else:
+            split = 'valid'
             self.image_folder = valid_image_folder
             annot_filename = valid_annotations_filename
 
