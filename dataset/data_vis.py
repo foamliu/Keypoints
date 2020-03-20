@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from hparams import num_joints
-from data_gen import DataGenSequence
+from dataset.data_gen import DataGenSequence
 
 if __name__ == '__main__':
     datagen = DataGenSequence('train')

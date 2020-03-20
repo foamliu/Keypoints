@@ -5,8 +5,8 @@ from tensorboardX import SummaryWriter
 from torch import nn
 
 from hparams import device, im_size, grad_clip, print_freq
-from data_gen import KpDataset
-from utils import parse_args, save_checkpoint, AverageMeter, clip_gradient, get_logger, get_learning_rate, \
+from dataset.data_gen import KpDataset
+from utils.utils import parse_args, save_checkpoint, AverageMeter, clip_gradient, get_logger, get_learning_rate, \
     adjust_learning_rate
 
 

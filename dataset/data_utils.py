@@ -3,7 +3,7 @@ import math
 
 import numpy as np
 
-from hparams import num_joints, joint_pairs, num_connections, num_joints_and_bkg, image_h, image_w
+from hparams import num_joints, joint_pairs, num_connections, num_joints_and_bkg, im_size
 
 ALL_PAF_MASK = np.ones((46, 46, num_connections * 2), dtype=np.uint8)
 ALL_HEATMAP_MASK = np.ones((46, 46, num_joints_and_bkg), dtype=np.uint8)
@@ -21,8 +21,8 @@ def from_raw_keypoints(human_annots, keypoint_annots, orig_shape):
             x = keypoints[j * 3]
             y = keypoints[j * 3 + 1]
             v = keypoints[j * 3 + 2]
-            x = x * image_w / orig_w
-            y = y * image_h / orig_h
+            x = x * im_size / orig_w
+            y = y * im_size / orig_h
             # only visible and occluded keypoints are used
             if v <= 2:
                 joints.append((x, y))

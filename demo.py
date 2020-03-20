@@ -4,7 +4,7 @@ import torch
 import torchvision
 from torchvision import transforms
 
-from utils import draw_bboxes
+from utils.utils import draw_bboxes
 
 # Data augmentation and normalization for training
 # Just normalization for validation
